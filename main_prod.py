@@ -1,20 +1,22 @@
 from modules_simili.get_token import get_token, get_token_prod
 from credentials import client_id, client_secret
 from modules_simili.LegiFR_call_funct import *
+from modules_simili.LegiFR_call_prod_funct import *
 from modules_simili.dataprep_funct import *
-import requests
 from tqdm import tqdm
+import requests
+
 
 access_token = get_token()
 access_token_prod = get_token_prod()
 
 # Test connection 
-if ping_pong_test(access_token) == 'pong':
+if ping_pong_test_prod(access_token) == 'pong':
     print("Successful ping pong test")
 
 # Step 1: Retreiving data from Léfifrance  
 try: 
-    json_output =  get_text_modif_byDateslot_textCid_extract_content(access_token, "LEGITEXT000006072026", "2020", "2021")
+    json_output =  get_text_modif_byDateslot_textCid_extract_content_prod(access_token, "LEGITEXT000006072026", "2020", "2021")
     print("Etape 1: Requête API LégiFrance")
 except Exception as e:
     print("Échec : Une erreur est survenue lors du Call. Détails : {e}")
@@ -31,7 +33,7 @@ print("Début de l'étape 3")
 print("Etape 3 en cours")
 
 try: 
-    ajout_col_AV(panda_output)
+    ajout_col_AV_prod(panda_output)
     print("Etape 3: Ajout de l'ancien contenu des articles avec succès")
 except Exception as e:
     print("Etape 3: Échec, une erreur est survenue lors du Call. Détails : {e}")
@@ -40,7 +42,7 @@ except Exception as e:
 print("Début de l'étape 4")
 print("Etape 4 en cours")
 try: 
-    ajout_col_coutenu_NV(panda_output)
+    ajout_col_coutenu_NV_prod(panda_output)
     print("Etape 4: Ajout du nouveau contenu des articles avec succès !")
 except Exception as e:
     print("Échec 4: Échec, une erreur est survenue lors du Call. Détails : {e}")
