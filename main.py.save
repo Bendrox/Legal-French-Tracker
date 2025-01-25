@@ -2,7 +2,6 @@ from modules_simili.get_token import get_token
 from credentials import client_id, client_secret
 from modules_simili.LegiFR_call_funct import *
 from modules_simili.dataprep_funct import *
-import requests
 
 access_token = get_token()
 
@@ -50,10 +49,11 @@ try:
 except Exception as e:
     print("Échec 5: Échec, une erreur est survenue lors du Call. Détails : {e}")
 
-#Step 6: Exporting database of LegiFrance
+#Step 6: Exporting database 1
 try:
-    panda_output.to_excel("data_output/Legifrance_DB_TrackChange.xlsx")
+    panda_output.to_excel("data_output/DB_Legifrance.xlsx")
     print("Etape 6: Fichier Excel a été exporté avec succès !")
 except Exception as e:
     print(f"Etape 6: Échec : Une erreur est survenue lors de l'enregistrement. Détails : {e}")
+
 
