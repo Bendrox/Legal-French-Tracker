@@ -3,10 +3,10 @@ import pandas as pd
 import io
 
 # Import de vos fonctions et variables
-from modules_simili.get_token import get_token
+from modules_tracker.get_token import get_token
 from credentials import client_id, client_secret
-from modules_simili.LegiFR_call_funct import *
-from modules_simili.dataprep_funct import *
+from modules_tracker.LegiFR_call_funct import *
+from modules_tracker.dataprep_funct import *
 
 # Titre centré et stylisé
 st.markdown(
