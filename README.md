@@ -40,7 +40,7 @@ Autres fichiers :
 -   Explore_LégiFrance_API.ipynb : notebook pour exploration des call api, est aussi une version notebook de l'application. 
 - modules_simili : regroupe les fichier .py pour main qui intégrent des fonctions de call API, d'authentification et de fonctions de préparations de données (nettoyage et formatage) 
 
-# Other upcomming features
+# Autres fonctionnalités à venir
 
 ------------------------------------------------------------------------------------------------------------------------------------------------
 
