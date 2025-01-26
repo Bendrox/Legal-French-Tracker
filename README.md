@@ -1,21 +1,62 @@
-# Regulatory Changes Tracker with Légifrance API
+# Tracker of Changes in French Legislation 
 
-## Goal(s)
-This project leverages the Légifrance API to automate the tracking of regulatory changes in French law. It monitors modifications in laws, decrees, and other regulatory sources published on Légifrance, providing analysis and reports on significant updates.
+## Problématique
+La législation française est de plus en plus complexe, le suivi des évolutions réglementaires est chronophage pour les juristes. L'outil développé propose de suivre les évolutions réglementaires sur un périmètre donné (Code de commerce, code civil...) et une période (année, mois) afin de faciliter les évolutions réglementaires. L'outil commente les changements réglementaire et propose un résumé des dernières évolutions dans le but  de faire gagner du temps. Les derniers changements réglementaires peuvent être décisifs lors d'analyses juridiques ou pour la définition d'une approche a une problématique légale.
 
-## Feature(s)
-- Law track change : Extract and compare versions of law texts to detect changes.
+## Objectifs
+Développer un outil qui récupère les dernières évolutions réglementaires dans les textes juridiques français, compare le contenu des articles (ancienne version vs nouvelle version). La restituons de ces données devra se faire dans un format tabulaire, classée de façon chronologique.
 
-## Prerequisites
+## Fonctionnalités 
+- Extraire les dernières évolutions sur le périmètre défini par l'utilisateur (code et dates)
+- Enrichir ces données avec le contenu de chaque article dans sa version avant et après.  
+- Commenter les changements réglementaire ligne par ligne à la fois pertinent, précis et succinct en respectant le langage juridique. 
+- Faire un résumé le plus pertinent et précis possible.
 
-Python 3.13.0
+## Prérequis
 
-Register on the Légifrance Developer Portal to obtain an API key: https://piste.gouv.fr
+- Python 3.13.0
+- Register on the Légifrance Developer Portal to obtain an API key: https://piste.gouv.fr
+- Légifrance API Key to access the Légifrance API. 
+- Accès GPT 4o
 
-Légifrance API Key to access the Légifrance API. 
+# Fonctionnement de la solution: 
+- Les modifications des textes législatifs sont récupérés depuis l'API Légifrance, retraités , nettoyés et transformés en un format tabulaire. 
+- Les données sont enrichies avec d'autres call API pour récupérer le contenu des articles (ancienne version vs nouvelle version)
+- Un LLM (GPT 4o) est utilisé pour commenter les changements.
+- Le LLM fait un résumé des commentaires une restitution a l'utilisateur.
 
+Les fichiers pour construire la base de données (tabulaire) sont : 
+- main.py (utilise un environnement sandbox de l'API Légifrance).
+- main_prod.py (utilise un environnement prod de l'API Légifrance. Aucun gain notable en performances enregistré).
+- main_tqdm.py (intégre tqdm pour le suivi de la progression) 
+
+-> Pour exécuter la construction de la base de donnée : python3 main.py ou python3 main_prod.py ou python3 main_tqdm.py depuis le terminal.
+
+Autres  : 
 
 ## Other upcomming features
-- Automated Reports: Generate reports on regulatory changes, including update dates, modified articles, and new provisions.
-- Change Alerts: Receive notifications on specific text updates or changes within specific areas of interest.
-- Evolution Visualization: Track the historical progression of texts to observe legislative evolution over time.
+
+------------------------------------------------------------------------------------------------------------------------------------------------
+
+## Problem Statement
+
+French legislation is becoming increasingly complex, and tracking regulatory changes is a time-consuming task for legal professionals. The tool developed aims to monitor regulatory changes within a specific scope (e.g., Commercial Code, Civil Code) and time frame (year, month), streamlining the process of staying updated. The tool provides commentary on regulatory changes and summarizes the latest developments, saving valuable time. Recent regulatory changes can be critical for legal analysis or when defining an approach to a legal issue.
+
+## Goals
+
+Develop a tool that retrieves the latest regulatory changes in French legal texts and compares article content (old version vs. new version). The data must be presented in a tabular format, organized chronologically.
+
+## Features
+- Extract the latest changes within the scope defined by the user (code and dates).
+- Enrich the data with the content of each article, showing both its previous and updated versions.
+- Provide line-by-line commentary on regulatory changes that is relevant, precise, and concise while adhering to legal language.
+- Generate a summary that is as relevant and accurate as possible.
+
+## Prerequisites
+- Python 3.13.0
+- Register on the Légifrance Developer Portal to obtain an API key: https://piste.gouv.fr
+- Légifrance API Key to access the Légifrance API.
+- Access to GPT-4.
+
+
+
