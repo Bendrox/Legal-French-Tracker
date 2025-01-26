@@ -25,15 +25,20 @@ Développer un outil qui récupère les dernières évolutions réglementaires d
 - Un LLM (GPT 4o) est utilisé pour commenter les changements.
 - Le LLM fait un résumé des commentaires une restitution a l'utilisateur.
 
-Les fichiers pour construire la base de données (tabulaire) sont : 
+# Execution de la solution : 
+Option 1: Les fichiers pour construire la base de données (tabulaire) sans passer par l'interface Streamlit sont : 
 - main.py (utilise un environnement sandbox de l'API Légifrance).
 - main_prod.py (utilise un environnement prod de l'API Légifrance. Aucun gain notable en performances enregistré).
 - main_tqdm.py (intégre tqdm pour le suivi de la progression) 
 
--> Pour exécuter la construction de la base de donnée : python3 main.py ou python3 main_prod.py ou python3 main_tqdm.py depuis le terminal.
+	-> Pour exécuter la construction de la base de donnée : python3 main.py ou python3 main_prod.py ou python3 main_tqdm.py depuis le terminal.
+
+Option 2: Les fichiers pour construire la base de données (tabulaire) en utilisant l'interface Streamlit sont : 
+- app.py
+	-> Pour démarrer l'application Strealit : python3 app.py depuis le terminal.
 
 Autres  : 
-
+- 
 ## Other upcomming features
 
 ------------------------------------------------------------------------------------------------------------------------------------------------
