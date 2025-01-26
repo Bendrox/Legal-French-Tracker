@@ -33,11 +33,11 @@ Option 1: Les fichiers pour construire la base de données (tabulaire) sans pass
 
 Option 2: Les fichiers pour construire la base de données (tabulaire) en utilisant l'interface Streamlit sont : 
 - app.py
-	-> Pour démarrer l'application Strealit : python3 app.py depuis le terminal.
+	-> Pour démarrer l'application Streamlit : python3 app.py depuis le terminal.
 
 Autres fichiers : 
 -   Explore_LégiFrance_API.ipynb : notebook pour exploration des call api, est aussi une version notebook de l'application. 
-- modules_simili : regroupe les fichier .py pour main qui intégrent des fonctions de call API, d'authentification et de fonctions de préparations de données (nettoyage et formatage) 
+- modules_tracker: regroupe les fichier .py pour main qui intégrent des fonctions de call API, d'authentification et de fonctions de préparations de données (nettoyage et formatage) 
 
 # Autres fonctionnalités à venir
 
@@ -77,7 +77,7 @@ Option 2: build the database (tabular format) using the Streamlit interface:
 
 Other files:
 - Explore_LégiFrance_API.ipynb: A notebook for exploring API calls, which also serves as a notebook version of the application.
-- modules_simili: Contains .py files for main, which include API call functions, authentication mechanisms, and data preparation functions (cleaning and formatting).
+- modules_tracker: Contains .py files for main, which include API call functions, authentication mechanisms, and data preparation functions (cleaning and formatting).
 
 # Other upcomming features
 
