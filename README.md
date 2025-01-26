@@ -28,7 +28,6 @@ Développer un outil qui récupère les dernières évolutions réglementaires d
 Option 1: Les fichiers pour construire la base de données (tabulaire) sans passer par l'interface Streamlit sont : 
 - main.py (utilise un environnement sandbox de l'API Légifrance).
 - main_prod.py (utilise un environnement prod de l'API Légifrance. Aucun gain notable en performances enregistré).
-- main_tqdm.py (intégre tqdm pour le suivi de la progression) 
 
 	-> Pour exécuter la construction de la base de donnée : python3 main.py ou python3 main_prod.py ou python3 main_tqdm.py depuis le terminal.
 
@@ -72,7 +71,6 @@ Develop a tool that retrieves the latest regulatory changes in French legal text
 Option 1: build the database (tabular format) without using the Streamlit interface:
 - main.py (uses a sandbox environment of the Légifrance API).
 - main_prod.py (uses a production environment of the Légifrance API; no significant performance improvements recorded).
-- main_tqdm.py (integrates tqdm for progress tracking).
 
 Option 2: build the database (tabular format) using the Streamlit interface:
 - streamlit run app.py in terminal to execute the Streamlit application.
