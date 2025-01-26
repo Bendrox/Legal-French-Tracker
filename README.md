@@ -1,4 +1,4 @@
-# Tracker of Changes in French Legislation 
+# Tracker changes in French Legislation 
 
 # Problématique
 La législation française est de plus en plus complexe, le suivi des évolutions réglementaires est chronophage pour les juristes. L'outil développé propose de suivre les évolutions réglementaires sur un périmètre donné (Code de commerce, code civil...) et une période (année, mois) afin de faciliter les évolutions réglementaires. L'outil commente les changements réglementaire et propose un résumé des dernières évolutions dans le but  de faire gagner du temps. Les derniers changements réglementaires peuvent être décisifs lors d'analyses juridiques ou pour la définition d'une approche a une problématique légale.
@@ -78,8 +78,8 @@ Option 2: build the database (tabular format) using the Streamlit interface:
 - streamlit run app.py in terminal to execute the Streamlit application.
 
 Other files:
+- Explore_LégiFrance_API.ipynb: A notebook for exploring API calls, which also serves as a notebook version of the application.
+- modules_simili: Contains .py files for main, which include API call functions, authentication mechanisms, and data preparation functions (cleaning and formatting).
 
-	•	Explore_LégiFrance_API.ipynb: A notebook for exploring API calls, which also serves as a notebook version of the application.
-	•	modules_simili: Contains .py files for main, which include API call functions, authentication mechanisms, and data preparation functions (cleaning and formatting).
 # Other upcomming features
 
