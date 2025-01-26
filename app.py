@@ -9,22 +9,35 @@ from modules_simili.LegiFR_call_funct import *
 from modules_simili.dataprep_funct import *
 
 
+
 def main():
-    st.title("Simili")
-
-    st.write(
+    # Titre centré et stylisé
+    st.markdown(
         """
-        Module 1: récupération et de transformation des données depuis LégiFrance.
-        """
+        <h1 style='text-align: center; color: navy;'>Legal French Tracker</h1>
+        """,
+        unsafe_allow_html=True
     )
 
-    # Zone pour saisir le Cid et l'intervalle d'années
-    textCid = st.text_input(
-        "Entrez le Cid du texte (exemple : 'LEGITEXT000006072026' pour le Code monétaire et financier) :",
-        value="LEGITEXT000006072026"
+    # Liste des textes juridiques et leurs Cid correspondants
+    codes = {
+        "Code civil": "LEGITEXT000006070721",
+        "Code de commerce": "LEGITEXT000005634379",
+        "Code des assurances": "LEGITEXT000006073984",
+        "Code monétaire et financier": "LEGITEXT000006072026",
+    }
+    # Liste déroulante pour sélectionner le texte juridique
+    selected_code = st.selectbox(
+        "Sélectionnez un code juridique :",
+        options=list(codes.keys()),  # Affiche les noms des codes
     )
-    annee_debut = st.text_input("Entrez date de début (année ou date foramt JJ-MM-AAAA) :", value="2020")
-    annee_fin = st.text_input("Entrez date de fin (année ou date foramt JJ-MM-AAAA):", value="2021")
+
+    # Récupération du Cid correspondant au texte sélectionné
+    textCid = codes[selected_code]
+
+    # Zone pour saisir l'intervalle d'années
+    annee_debut = st.text_input("Entrez la date de début (année ou format JJ-MM-AAAA) :", value="2020")
+    annee_fin = st.text_input("Entrez la date de fin (année ou format JJ-MM-AAAA) :", value="2021")
 
     # Bouton d'exécution
     if st.button("Lancer le processus"):
@@ -34,7 +47,7 @@ def main():
             st.success("Étape 0 - Récupération du token réussie")
         except Exception as e:
             st.error(f"Erreur lors de la récupération du token : {e}")
-            return  # on arrête l'exécution si échec
+            return
 
         # 2) Test de connexion Ping Pong
         try:
