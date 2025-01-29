@@ -132,4 +132,11 @@ def filter_titre_art_modificat_xl(xl_file, terme_filtre_1 :str, terme_filtre_2:s
     pd_db_file =  pd_db_file[pd_db_file['Titre Article Modificateur'].str.contains(terme_filtre_1)| pd_db_file['Titre Article Modificateur'].str.contains(terme_filtre_2) ]
     return pd_db_file
 
+# Applying LLM on each row :
+def llm_apply_row(pd_db_file):
+    pd_db_file['LLM_Change_Analysis_1'] = pd_db_file.apply(
+    lambda row: llm_legal_change_com_v1(row['Contenu_Ancien_Article'], row['Contenu_Nouv_Vers_Article']), 
+    axis=1)
+    return pd_db_file
+
 
