@@ -119,10 +119,11 @@ def import_xlsx_to_pandas(path :str): #"/Users/oussa/Desktop/Github_perso/Legal_
     imported_DB= pd.read_excel(path)
     return imported_DB
 
-#Filter on Titre Article Modificateur
-def filter_on_titre_art_modificat(pd_db_file, terme_filtre :str): #"/Users/oussa/Desktop/Github_perso/Legal_FR_Tracker/data_output/Legifrance_DB_TrackChange.xlsx"
-    AML5_modifs =  AML5_modifs[AML5_modifs['Titre Article Modificateur'].str.contains("n°2020-1544")| AML5_modifs['Titre Article Modificateur'].str.contains("n°2020-115") ]
-    imported_DB= pd.read_excel(pd_db_file)
-    return imported_DB
+#Filter on Titre Article Modificateur, from pandas to Excel
+def filter_on_titre_art_modificat(pd_db_file, terme_filtre_1 :str, terme_filtre_2:str ): 
+    #"/Users/oussa/Desktop/Github_perso/Legal_FR_Tracker/data_output/Legifrance_DB_TrackChange.xlsx"
+    pd_db_file =  pd_db_file[pd_db_file['Titre Article Modificateur'].str.contains(terme_filtre_1)| pd_db_file['Titre Article Modificateur'].str.contains(terme_filtre_2) ]
+    export_excel= pd.read_excel(pd_db_file)
+    return export_excel
 
 
