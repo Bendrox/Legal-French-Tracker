@@ -8,6 +8,8 @@ from credentials import client_id, client_secret
 from modules_tracker.LegiFR_call_sandbox_funct import *
 from modules_tracker.LegiFR_call_prod_funct import *
 from modules_tracker.dataprep_funct import *
+from LLM_Analytic_changes import llm_apply_row
+from LLM_Analytic_changes import *
 
 # Titre centré et stylisé
 st.markdown(
@@ -48,6 +50,9 @@ if filtrer_numero == "Oui":
     numero_1 = st.text_input("Entrez le premier numéro de décret / ordonnance / loi :", value="n°2020-115")
     numero_2 = st.text_input("Entrez le deuxième numéro de décret / ordonnance / loi :", value="n°2020-1544")
 
+# Activation brique LLM
+Active_LLM = st.radio("Voulez vous avoir un commentaire des changements de chaque article et d'un résumé des changements ?", ("Non", "Oui"))
+
 # Bouton exécution
 if st.button("Lancer le tracker"):
     try:
@@ -77,7 +82,9 @@ if st.button("Lancer le tracker"):
     # Formatage  données
     try:
         panda_output = transform_json_to_dataframe(json_output)
-        st.success("Étape 2 - Formatage des données réussi")
+        panda_output = panda_output.drop('Est la dernière version', axis=1)
+        panda_output.reset_index(drop=True, inplace=True)
+        st.success(f"Étape 2 - Formatage des données réussi : {len(panda_output)} lignes créées")
     except Exception as e:
         st.error(f"Étape 2 - Échec : {e}")
         
@@ -88,40 +95,51 @@ if st.button("Lancer le tracker"):
                 panda_output["Titre Article Modificateur"].astype(str).str.contains( numero_1, na=False, case=False ) |
                 panda_output["Titre Article Modificateur"].astype(str).str.contains( numero_2, na=False, case=False )
             ]
-            st.success(f"Filtrage appliqué ")
+            st.success(f"Étape 3 - Filtrage appliqué : {len(panda_output)} lignes gardées")
         else:
-            st.success("Aucun filtrage sur les numéros appliqué")
+            st.success("Étape 3 - Aucun filtrage sur les numéros appliqué")
     except Exception as e:
-        st.error(f"Erreur lors du filtrage : {e}")
+        st.error(f"Étape 3 - Erreur lors du filtrage : {e}")
         
     # Ajout l'ancien contenu
     try:
         ajout_col_AV(panda_output)
-        st.success("Étape 3 - Ajout de l'ancienne version des articles réussi")
-    except Exception as e:
-        st.error(f"Étape 3 - Échec : {e}")
-
-    # Ajout nouveau contenu
-    try:
-        ajout_col_coutenu_NV(panda_output)
         st.success("Étape 4 - Ajout de l'ancienne version des articles réussi")
     except Exception as e:
         st.error(f"Étape 4 - Échec : {e}")
 
-    # Ajout colonne comparative
+    # Ajout nouveau contenu
     try:
-        compare_AV_vs_NV(panda_output)
-        st.success("Étape 5 - Ajout de la colonne de comparaison réussi")
+        ajout_col_coutenu_NV(panda_output)
+        st.success("Étape 5 - Ajout de l'ancienne version des articles réussi")
     except Exception as e:
         st.error(f"Étape 5 - Échec : {e}")
 
+    # Ajout colonne comparative
+    try:
+        compare_AV_vs_NV(panda_output)
+        st.success("Étape 6 - Ajout de la colonne de comparaison réussi")
+    except Exception as e:
+        st.error(f"Étape 6 - Échec : {e}")
+        
+    # LLM 
+    try:
+        if Active_LLM == "Oui":
+            st.success("Étape 7 - Lancement de l'analyse des textes juridiques par le LLM")
+            panda_output = llm_apply_row(panda_output)
+            st.success("Étape 7 - Analyse LLM réussie")
+        else :  
+            st.success("Étape 7 - Absence de comparaison")
+        
+    except Exception as e:
+        st.error(f"Étape 7 - Échec : {e}")
 
     # Export en mémoire et téléchargement
     try:
         buffer = io.BytesIO()
         with pd.ExcelWriter(buffer, engine='xlsxwriter') as writer:
             panda_output.to_excel(writer, index=False, sheet_name='Données')
-        st.success("Étape 6 - Fichier Excel préparé pour téléchargement")
+        st.success("Étape 8 - Fichier Excel préparé pour téléchargement")
 
         st.write("Aperçu des données :")
         st.dataframe(panda_output.head(10))
@@ -133,4 +151,4 @@ if st.button("Lancer le tracker"):
             mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
         )
     except Exception as e:
-        st.error(f"Étape 6 - Échec : {e}")
+        st.error(f"Étape 8 - Échec : {e}")
