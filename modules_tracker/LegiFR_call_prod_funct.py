@@ -14,7 +14,8 @@ def ping_pong_test_prod(access_token):
 # Call 2 - API call to build the main table: 
 # Récupère une version (plage de dates) d'un texte (textCid) et version en vigueur (date) 
 
-def get_text_modif_byDateslot_textCid_extract_content_prod(access_token, textCid, startYear, endYear): #LEGITEXT000006073984 code des assurances
+def get_text_modif_byDateslot_textCid_extract_content_prod(access_token, textCid, startYear, endYear): 
+	#LEGITEXT000006073984 code des assurances
   headers = { 'accept': 'application/json', 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + access_token_prod}
   data = {  "endYear": endYear,  #"dateConsult": "2021-04-15",
   "startYear": startYear,
