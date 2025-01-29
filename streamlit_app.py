@@ -17,12 +17,12 @@ st.markdown(
     unsafe_allow_html=True
 )
 
-# Liste des textes juridiques et leurs Cid correspondants
+# Étape 1 : Sélection du Code Juridique
 codes = {
+    "Code monétaire et financier": "LEGITEXT000006072026",
     "Code civil": "LEGITEXT000006070721",
     "Code de commerce": "LEGITEXT000005634379",
     "Code des assurances": "LEGITEXT000006073984",
-    "Code monétaire et financier": "LEGITEXT000006072026",
     "Code pénal": "LEGITEXT000006070719",
     "Code du travail": "LEGITEXT000006072050",
     "Code de la consommation": "LEGITEXT000006069565",
@@ -33,29 +33,30 @@ codes = {
     "Code général des impôts": "LEGITEXT000006069574"
 }
 
-# Liste déroulante pour sélectionner le texte juridique
-selected_code = st.selectbox(
-    "Sélectionnez un code juridique :",
-    options=list(codes.keys()),  # Affiche les noms des codes
-)
-
-# Récupération du Cid correspondant au texte sélectionné
+selected_code = st.selectbox("Sélectionnez un code juridique :", options=list(codes.keys()))
 textCid = codes[selected_code]
 
-# Zone pour saisir l'intervalle d'années
+# Étape 2 : Intervalle d'années
 annee_debut = st.text_input("Entrez la date de début (année ou format JJ-MM-AAAA) :", value="2020")
 annee_fin = st.text_input("Entrez la date de fin (année ou format JJ-MM-AAAA) :", value="2021")
 
-# Bouton d'exécution
+# Filtrage sur N° de décret / ordonnance / loi
+filtrer_numero = st.radio("Voulez-vous filtrer sur un N° de décret / ordonnance / loi ?", ("Non", "Oui"))
+
+numero_1, numero_2 = None, None
+if filtrer_numero == "Oui":
+    numero_1 = st.text_input("Entrez le premier numéro de décret / ordonnance / loi :", value="n°2020-115")
+    numero_2 = st.text_input("Entrez le deuxième numéro de décret / ordonnance / loi :", value="n°2020-1544")
+
+# Bouton exécution
 if st.button("Lancer le tracker"):
-    # 1) Récupération du token
     try:
         access_token = get_token()
         st.success("Étape 0 - Récupération du token réussie")
     except Exception as e:
         st.error(f"Erreur lors de la récupération du token : {e}")
 
-    # 2) Test de connexion Ping Pong
+    # Test Ping Pong
     try:
         if ping_pong_test(access_token) == 'pong':
             st.success("Test Ping Pong : connexion réussie")
@@ -64,7 +65,7 @@ if st.button("Lancer le tracker"):
     except Exception as e:
         st.error(f"Erreur lors du test Ping Pong : {e}")
 
-    # 3) Récupération des données
+    # Récupération des données
     try:
         json_output = get_text_modif_byDateslot_textCid_extract_content(
             access_token, textCid, annee_debut, annee_fin
@@ -73,44 +74,57 @@ if st.button("Lancer le tracker"):
     except Exception as e:
         st.error(f"Étape 1 - Échec : {e}")
 
-    # 4) Formatage des données
+    # Formatage  données
     try:
         panda_output = transform_json_to_dataframe(json_output)
         st.success("Étape 2 - Formatage des données réussi")
     except Exception as e:
         st.error(f"Étape 2 - Échec : {e}")
-
-    # 5) Ajout de l'ancien contenu
+        
+    #  Filtrage par N° de décret / ordonnance / loi
+    try:
+        if filtrer_numero == "Oui":
+            panda_output = panda_output[
+                panda_output["Titre Article Modificateur"].astype(str).str.contains( numero_1, na=False, case=False ) |
+                panda_output["Titre Article Modificateur"].astype(str).str.contains( numero_2, na=False, case=False )
+            ]
+            st.success(f"Filtrage appliqué ")
+        else:
+            st.success("Aucun filtrage sur les numéros appliqué")
+    except Exception as e:
+        st.error(f"Erreur lors du filtrage : {e}")
+        
+    # Ajout l'ancien contenu
     try:
         ajout_col_AV(panda_output)
-        st.success("Étape 3 - Ajout de l'ancien contenu (AV) réussi")
+        st.success("Étape 3 - Ajout de l'ancienne version des articles réussi")
     except Exception as e:
         st.error(f"Étape 3 - Échec : {e}")
 
-    # 6) Ajout du nouveau contenu
+    # Ajout nouveau contenu
     try:
         ajout_col_coutenu_NV(panda_output)
-        st.success("Étape 4 - Ajout du nouveau contenu (NV) réussi")
+        st.success("Étape 4 - Ajout de l'ancienne version des articles réussi")
     except Exception as e:
         st.error(f"Étape 4 - Échec : {e}")
 
-    # 7) Ajout de la colonne comparative
+    # Ajout colonne comparative
     try:
         compare_AV_vs_NV(panda_output)
         st.success("Étape 5 - Ajout de la colonne de comparaison réussi")
     except Exception as e:
         st.error(f"Étape 5 - Échec : {e}")
 
-    # 8) Export en mémoire et bouton de téléchargement
+
+    # Export en mémoire et téléchargement
     try:
-        # On convertit la base pandas_output en Excel dans un buffer
         buffer = io.BytesIO()
         with pd.ExcelWriter(buffer, engine='xlsxwriter') as writer:
             panda_output.to_excel(writer, index=False, sheet_name='Données')
         st.success("Étape 6 - Fichier Excel préparé pour téléchargement")
 
         st.write("Aperçu des données :")
-        st.dataframe(panda_output.head(10))  # On montre les 10 premières lignes
+        st.dataframe(panda_output.head(10))
 
         st.download_button(
             label="Télécharger le fichier Excel",
@@ -120,6 +134,3 @@ if st.button("Lancer le tracker"):
         )
     except Exception as e:
         st.error(f"Étape 6 - Échec : {e}")
-        
-        
-        
