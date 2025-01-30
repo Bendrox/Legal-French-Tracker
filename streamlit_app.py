@@ -3,18 +3,30 @@ import pandas as pd
 import io
 
 # Import de vos fonctions et variables
-from modules_tracker.get_token import get_token
+from modules_tracker.get_token import get_token, get_token_prod
 from credentials import client_id, client_secret
 from modules_tracker.LegiFR_call_sandbox_funct import *
 from modules_tracker.LegiFR_call_prod_funct import *
 from modules_tracker.dataprep_funct import *
 from LLM_Analytic_changes import llm_apply_row
 from LLM_Analytic_changes import *
+from langchain_community.callbacks.manager import get_openai_callback
 
 # Titre centré et stylisé
 st.markdown(
     """
     <h1 style='text-align: center; color: navy;'>Legal French Tracker</h1>
+    """,
+    unsafe_allow_html=True
+)
+
+st.markdown(
+    """
+    <p style='font-size: 15px; color: #333; max-width: 800px; line-height: 1.5;'>
+        A powerful solution to monitor and track regulatory changes in French law, 
+        compare article modifications ,  provide legal insights on key amendments, 
+        and generate comprehensive summary reports on demand.
+    </p>
     """,
     unsafe_allow_html=True
 )
@@ -51,12 +63,14 @@ if filtrer_numero == "Oui":
     numero_2 = st.text_input("Entrez le deuxième numéro de décret / ordonnance / loi :", value="n°2020-1544")
 
 # Activation brique LLM
-Active_LLM = st.radio("Voulez vous avoir un commentaire des changements de chaque article et d'un résumé des changements ?", ("Non", "Oui"))
+Active_LLM = st.radio("Voulez vous avoir une analyse des changements de chaque article suivi d'un résumé des principaux changements ?", ("Non", "Oui"))
 
 # Bouton exécution
 if st.button("Lancer le tracker"):
     try:
         access_token = get_token()
+        access_token_prod = get_token_prod()
+
         st.success("Étape 0 - Récupération du token réussie")
     except Exception as e:
         st.error(f"Erreur lors de la récupération du token : {e}")
@@ -72,8 +86,8 @@ if st.button("Lancer le tracker"):
 
     # Récupération des données
     try:
-        json_output = get_text_modif_byDateslot_textCid_extract_content(
-            access_token, textCid, annee_debut, annee_fin
+        json_output = get_text_modif_byDateslot_textCid_extract_content_prod(
+            access_token_prod, textCid, annee_debut, annee_fin
         )
         st.success("Étape 1 - Requête API LégiFrance effectuée avec succès")
     except Exception as e:
@@ -103,14 +117,14 @@ if st.button("Lancer le tracker"):
         
     # Ajout l'ancien contenu
     try:
-        ajout_col_AV(panda_output)
+        ajout_col_AV_prod(panda_output)
         st.success("Étape 4 - Ajout de l'ancienne version des articles réussi")
     except Exception as e:
         st.error(f"Étape 4 - Échec : {e}")
 
     # Ajout nouveau contenu
     try:
-        ajout_col_coutenu_NV(panda_output)
+        ajout_col_coutenu_NV_prod(panda_output)
         st.success("Étape 5 - Ajout de l'ancienne version des articles réussi")
     except Exception as e:
         st.error(f"Étape 5 - Échec : {e}")
@@ -127,6 +141,7 @@ if st.button("Lancer le tracker"):
         if Active_LLM == "Oui":
             st.success("Étape 7 - Lancement de l'analyse des textes juridiques par le LLM")
             panda_output = llm_apply_row(panda_output)
+            
             st.success("Étape 7 - Analyse LLM réussie")
         else :  
             st.success("Étape 7 - Absence de comparaison")

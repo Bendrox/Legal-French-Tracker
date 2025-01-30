@@ -1,4 +1,4 @@
-# Tracker changes in French Legislation 
+# Legal French Tracker 
 
 # Problématique
 La législation française est de plus en plus complexe, le suivi des évolutions réglementaires est chronophage pour les juristes. L'outil développé propose de suivre les évolutions réglementaires sur un périmètre donné (Code de commerce, code civil...) et une période (année, mois) afin de faciliter les évolutions réglementaires. L'outil commente les changements réglementaire et propose un résumé des dernières évolutions dans le but  de faire gagner du temps. Les derniers changements réglementaires peuvent être décisifs lors d'analyses juridiques ou pour la définition d'une approche a une problématique légale.

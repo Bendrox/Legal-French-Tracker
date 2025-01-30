@@ -6,7 +6,7 @@ access_token = get_token()
 access_token_prod = get_token_prod()
 
 # Call 1 - ping pong test
-def ping_pong_test_prod(access_token): 
+def ping_pong_test_prod(): 
     headers_1 = {'accept': 'text/plain', 'Authorization': 'Bearer ' + access_token_prod}
     output = requests.get("https://api.piste.gouv.fr/dila/legifrance/lf-engine-app/consult/ping", headers=headers_1).text
     return output
