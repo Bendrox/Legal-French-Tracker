@@ -1,47 +1,105 @@
-**Résumé des Analyses des Évolutions Réglementaires**
+### Résumé des Évolutions Réglementaires
 
-**Niveau de détail : Succinct**
-**Public cible : Professionnel**
+#### Public cible : Professionnel (DAJ)
+#### Niveau de détail : Succinct
 
-**Thématiques et Tendances Observées :**
+---
 
-1. **Références Législatives et Réglementaires :**
-   - **Suppression de Références Européennes :**
-     - La nouvelle version de certains articles ne mentionne plus le règlement (UE) 2023/1114 sur les marchés de crypto-actifs, recentrant ainsi la réglementation sur les dispositions nationales (article L. 54-10-2).
-   - **Mise à Jour des Références Législatives :**
-     - Les articles L. 54-10-3 à L. 54-10-5 sont désormais régis par l'ordonnance n° 2020-1544 du 9 décembre 2020, renforçant le cadre de la lutte contre le blanchiment de capitaux et le financement du terrorisme.
+**Thématique 1 : Suppression et Simplification des Obligations**
 
-2. **Champ d'Application et Obligations :**
-   - **Réduction du Champ d'Application :**
-     - La nouvelle version de certains articles se limite aux services mentionnés aux 1° à 4° de l'article L. 54-10-2, excluant les services sur crypto-actifs au sens du règlement européen.
-   - **Extension des Entités Concernées :**
-     - Inclusion des personnes mentionnées aux 1° à 7° bis et au 7° quater de l'article L. 561-2, élargissant le champ des entités soumises aux obligations de déclaration et de partage d'informations.
+1. **Suppression de certaines obligations spécifiques** :
+   - Les obligations relatives à la sécurité, au contrôle interne, à la gestion des conflits d'intérêts, à la résilience et à la sécurité des systèmes informatiques ont été supprimées.
+   - Les obligations spécifiques pour les prestataires fournissant certains services, telles que la conclusion de conventions avec les clients et la mise en place de moyens pour la restitution des actifs numériques, ont été retirées.
 
-3. **Interdictions et Restrictions :**
-   - **Modification des Interdictions :**
-     - Précision que l'interdiction d'utiliser certaines dénominations s'applique spécifiquement aux prestataires des services mentionnés aux mêmes 1° et 4°.
-   - **Extension des Interdictions :**
-     - L'interdiction de tenir des comptes ou des livrets d'épargne anonymes est étendue aux personnes mentionnées aux 1° à 7° bis de l'article L. 561-2.
+2. **Simplification des exigences de conformité** :
+   - Les exigences concernant la communication d'informations claires, l'avertissement des risques, la publication des politiques tarifaires et la gestion des réclamations ont été supprimées.
 
-4. **Seuils et Conditions :**
-   - **Seuil de Détention de Capital :**
-     - Le seuil de détention de capital ou de droits de vote nécessitant une justification d'honorabilité et de compétence est relevé de 10 % à 25 %.
-   - **Conditions de Traitement des Informations :**
-     - Maintien des exigences strictes pour garantir la protection des données personnelles, avec des clarifications sur l'utilisation des informations.
+**Impact Global** :
+   - Réduction des obligations imposées aux prestataires de services, simplification des procédures de conformité.
 
-5. **Adaptations Locales :**
-   - **Nouvelle-Calédonie :**
-     - Adaptations spécifiques pour la Nouvelle-Calédonie, incluant la conversion des montants en euros en francs CFP et la suppression de certaines mentions relatives à l'Union européenne.
+---
 
-**Impacts Globaux :**
-- **Simplification et Clarification :**
-  - Les modifications visent à simplifier et clarifier les exigences réglementaires, en se concentrant sur la législation nationale et en précisant les interdictions applicables.
-- **Renforcement des Mesures de Lutte Contre le Blanchiment :**
-  - Extension du champ des entités concernées et introduction de nouvelles dispositions pour les entreprises mères de groupes, renforçant le cadre réglementaire en matière de lutte contre le blanchiment de capitaux et le financement du terrorisme.
-- **Adaptation aux Évolutions du Marché :**
-  - Introduction de nouvelles catégories spécifiques et ajustements des seuils de contrôle pour mieux s'adapter aux pratiques actuelles du marché financier et technologique.
+**Thématique 2 : Réduction des Pouvoirs de l'AMF**
 
-**Ambiguïtés et Manques d'Informations :**
-- Certaines analyses révèlent des ambiguïtés ou des manques d'informations, notamment en ce qui concerne l'impact exact de la suppression des références aux règlements européens sur les prestataires de services sur crypto-actifs.
+1. **Réduction des pouvoirs de l'AMF** :
+   - Retrait de la disposition permettant à l'AMF de vérifier la sécurité des systèmes d'information des prestataires.
+   - Suppression de la possibilité pour l'AMF de radier un prestataire de sa propre initiative ou à l'initiative de l'Autorité de contrôle prudentiel et de résolution.
 
-En conclusion, les modifications apportées aux articles analysés montrent une tendance à la simplification et à la clarification des obligations réglementaires, tout en renforçant les mesures de lutte contre le blanchiment de capitaux et le financement du terrorisme. Les adaptations locales et les mises à jour des références législatives reflètent une volonté d'harmonisation et de cohérence avec les évolutions récentes du cadre réglementaire.
+**Impact Global** :
+   - Diminution des capacités de surveillance et de sanction de l'AMF.
+
+---
+
+**Thématique 3 : Maintien de certaines Exigences**
+
+1. **Maintien des exigences de déclaration** :
+   - Obligation pour les prestataires de déclarer toute modification affectant le respect des obligations à l'AMF.
+
+2. **Maintien de la publication de la liste des prestataires** :
+   - La liste des prestataires enregistrés continue d'être publiée par l'AMF.
+
+**Impact Global** :
+   - Maintien des exigences de transparence et de déclaration pour les prestataires.
+
+---
+
+**Thématique 4 : Enregistrement et Transparence**
+
+1. **Enregistrement préalable** :
+   - Obligation d'enregistrement préalable auprès de l'AMF pour les prestataires de services financiers.
+
+2. **Interdiction d'utilisation de dénominations trompeuses** :
+   - Interdiction explicite pour les non-enregistrés d'utiliser des dénominations pouvant induire en erreur.
+
+**Impact Global** :
+   - Renforcement du contrôle et de la transparence sur le marché financier.
+
+---
+
+**Thématique 5 : Ajustements et Clarifications**
+
+1. **Changement de l'autorité consultative** :
+   - L'AMF peut désormais solliciter l'avis de l'autorité nationale en charge de la sécurité des systèmes d'information.
+
+2. **Modification du seuil de détention de capital** :
+   - Seuil modifié de "plus de 10 %" à "plus de 25 %".
+
+3. **Clarification et précision** :
+   - Ajout de précisions linguistiques pour renforcer l'exigence de diligence dans le traitement des plaintes.
+
+**Impact Global** :
+   - Ajustements visant à clarifier et préciser les exigences réglementaires.
+
+---
+
+**Thématique 6 : Extension et Simplification**
+
+1. **Extension des entités couvertes** :
+   - Inclusion des personnes mentionnées aux 7° bis et 7° quater de l'article L. 561-2.
+
+2. **Suppression de certaines références spécifiques** :
+   - Simplification de la rédaction en supprimant des références détaillées.
+
+3. **Ajout d'un nouveau paragraphe (III)** :
+   - Permet aux entreprises mères de groupes d'accéder aux informations relatives aux déclarations prévues.
+
+**Impact Global** :
+   - Élargissement du champ des entités couvertes et simplification des dispositions.
+
+---
+
+**Thématique 7 : Adaptations pour la Nouvelle-Calédonie**
+
+1. **Références législatives et réglementaires** :
+   - Adaptation des références législatives et réglementaires spécifiques à la Nouvelle-Calédonie.
+
+2. **Conversion des montants financiers** :
+   - Conversion des montants en euros en francs CFP.
+
+**Impact Global** :
+   - Adaptation des dispositions législatives aux spécificités locales de la Nouvelle-Calédonie.
+
+---
+
+**Conclusion** :
+Les modifications apportées aux articles de loi visent principalement à simplifier et réduire les obligations des prestataires de services, tout en maintenant certaines exigences de base en matière de déclaration et de publication. Les pouvoirs de l'AMF ont été réduits, et des mesures de contrôle plus strictes ont été introduites pour l'exercice de la profession de prestataire de services financiers. Les ajustements apportés visent également à clarifier et préciser les exigences réglementaires, tout en adaptant les dispositions aux spécificités locales, notamment pour la Nouvelle-Calédonie.

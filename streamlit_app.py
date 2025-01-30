@@ -47,6 +47,7 @@ codes = {
     "Code général des impôts": "LEGITEXT000006069574"
 }
 
+
 selected_code = st.selectbox("Sélectionnez un code juridique :", options=list(codes.keys()))
 textCid = codes[selected_code]
 
@@ -65,10 +66,14 @@ if filtrer_numero == "Oui":
 # Activation brique LLM
 Active_LLM = st.radio("Voulez vous avoir une analyse des changements de chaque article suivi d'un résumé des 10 premiers changements ?  ", ("Non", "Oui"))
 
+if Active_LLM == "Oui":
+    audience = st.selectbox("Sélectionnez le type d'audience pour l'analyse juridique:", options=["Tout Public", "Professionnel (DAJ)"])
+    detail = st.selectbox("Sélectionnez le niveau de détail :", options= ["Succinct", "Détaillé"])
+
 # Bouton exécution
 if st.button("Lancer le tracker"):
     try:
-        access_token = get_token()
+        #access_token = get_token() sandbox API call functions
         access_token_prod = get_token_prod()
 
         st.success("Étape 0 - Récupération du token réussie")
@@ -142,7 +147,7 @@ if st.button("Lancer le tracker"):
             st.success("Étape 7 - Lancement de l'analyse des textes juridiques par le LLM (10 premiers changements) ")
             panda_output = llm_apply_row(panda_output.iloc[0:10,:])
             text_variable = panda_output['LLM_Change_Analysis_1'].str.cat()
-            summary = wrap_up_multi(text_variable, 'professionnel', 'succinct')
+            summary = wrap_up_multi(text_variable, audience, detail)
             st.success("Étape 7 - Analyse juridique réussie")
             # export to txt: 
             text_file = open("/Users/oussa/Desktop/Github_perso/Legal_FR_Tracker/data_output_streamlit/Output_summary_proXsuc_vStrmlit.txt", "w")
@@ -150,8 +155,7 @@ if st.button("Lancer le tracker"):
             text_file.close()
         
             st.success("Étape 7 - Analyse juridique exportée")
-            st.write(f"Legal analysis (LLM output) : 
-                     {summary}")
+            st.write(f""" {summary}""")
             
         else :  
             st.success("Étape 7 - Absence de comparaison")
@@ -168,7 +172,7 @@ if st.button("Lancer le tracker"):
 
         #st.write("Aperçu du résumé :")
         #st.text(f"{text_file}")
-        st.write("Aperçu du tableau :")
+        st.write(f"Aperçu du tableau des modifications du {selected_code} de {annee_debut} a/au {annee_fin}")
         st.dataframe(panda_output.head(10))
         
 
