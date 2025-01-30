@@ -1,0 +1,47 @@
+**Résumé des Analyses des Évolutions Réglementaires**
+
+**Niveau de détail : Succinct**
+**Public cible : Professionnel**
+
+**Thématiques et Tendances Observées :**
+
+1. **Références Législatives et Réglementaires :**
+   - **Suppression de Références Européennes :**
+     - La nouvelle version de certains articles ne mentionne plus le règlement (UE) 2023/1114 sur les marchés de crypto-actifs, recentrant ainsi la réglementation sur les dispositions nationales (article L. 54-10-2).
+   - **Mise à Jour des Références Législatives :**
+     - Les articles L. 54-10-3 à L. 54-10-5 sont désormais régis par l'ordonnance n° 2020-1544 du 9 décembre 2020, renforçant le cadre de la lutte contre le blanchiment de capitaux et le financement du terrorisme.
+
+2. **Champ d'Application et Obligations :**
+   - **Réduction du Champ d'Application :**
+     - La nouvelle version de certains articles se limite aux services mentionnés aux 1° à 4° de l'article L. 54-10-2, excluant les services sur crypto-actifs au sens du règlement européen.
+   - **Extension des Entités Concernées :**
+     - Inclusion des personnes mentionnées aux 1° à 7° bis et au 7° quater de l'article L. 561-2, élargissant le champ des entités soumises aux obligations de déclaration et de partage d'informations.
+
+3. **Interdictions et Restrictions :**
+   - **Modification des Interdictions :**
+     - Précision que l'interdiction d'utiliser certaines dénominations s'applique spécifiquement aux prestataires des services mentionnés aux mêmes 1° et 4°.
+   - **Extension des Interdictions :**
+     - L'interdiction de tenir des comptes ou des livrets d'épargne anonymes est étendue aux personnes mentionnées aux 1° à 7° bis de l'article L. 561-2.
+
+4. **Seuils et Conditions :**
+   - **Seuil de Détention de Capital :**
+     - Le seuil de détention de capital ou de droits de vote nécessitant une justification d'honorabilité et de compétence est relevé de 10 % à 25 %.
+   - **Conditions de Traitement des Informations :**
+     - Maintien des exigences strictes pour garantir la protection des données personnelles, avec des clarifications sur l'utilisation des informations.
+
+5. **Adaptations Locales :**
+   - **Nouvelle-Calédonie :**
+     - Adaptations spécifiques pour la Nouvelle-Calédonie, incluant la conversion des montants en euros en francs CFP et la suppression de certaines mentions relatives à l'Union européenne.
+
+**Impacts Globaux :**
+- **Simplification et Clarification :**
+  - Les modifications visent à simplifier et clarifier les exigences réglementaires, en se concentrant sur la législation nationale et en précisant les interdictions applicables.
+- **Renforcement des Mesures de Lutte Contre le Blanchiment :**
+  - Extension du champ des entités concernées et introduction de nouvelles dispositions pour les entreprises mères de groupes, renforçant le cadre réglementaire en matière de lutte contre le blanchiment de capitaux et le financement du terrorisme.
+- **Adaptation aux Évolutions du Marché :**
+  - Introduction de nouvelles catégories spécifiques et ajustements des seuils de contrôle pour mieux s'adapter aux pratiques actuelles du marché financier et technologique.
+
+**Ambiguïtés et Manques d'Informations :**
+- Certaines analyses révèlent des ambiguïtés ou des manques d'informations, notamment en ce qui concerne l'impact exact de la suppression des références aux règlements européens sur les prestataires de services sur crypto-actifs.
+
+En conclusion, les modifications apportées aux articles analysés montrent une tendance à la simplification et à la clarification des obligations réglementaires, tout en renforçant les mesures de lutte contre le blanchiment de capitaux et le financement du terrorisme. Les adaptations locales et les mises à jour des références législatives reflètent une volonté d'harmonisation et de cohérence avec les évolutions récentes du cadre réglementaire.

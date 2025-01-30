@@ -1,0 +1,65 @@
+### Résumé des Évolutions Réglementaires des Articles de Loi
+
+#### Variables
+- **Niveau de détail** : détaillé
+- **Public cible** : professionnel
+
+#### Introduction
+L'analyse des versions antérieure et révisée de plusieurs articles de loi révèle des modifications significatives visant à simplifier, clarifier et adapter les obligations réglementaires pour les prestataires de services, notamment dans le domaine des actifs numériques. Ces changements ont des implications importantes pour la conformité, la transparence et la protection des clients.
+
+#### Thématiques et Tendances Communes
+
+1. **Suppression de certaines obligations spécifiques**
+   - **Ancienne version** : Obligations détaillées concernant les dispositifs de sécurité, de contrôle interne, de gestion des conflits d'intérêts, et de systèmes informatiques résilients et sécurisés.
+   - **Nouvelle version** : Suppression de ces obligations, ainsi que celles spécifiques aux prestataires fournissant des services mentionnés au 1° de l'article L. 54-10-2.
+   - **Impact** : Réduction de la charge administrative et des coûts de conformité pour les prestataires.
+
+2. **Clarification des obligations de lutte contre le blanchiment et le financement du terrorisme**
+   - **Ancienne version** : Références détaillées aux articles spécifiques du code monétaire et financier.
+   - **Nouvelle version** : Simplification de la rédaction tout en maintenant les exigences essentielles.
+   - **Impact** : Maintien de la sécurité et de la conformité tout en simplifiant les obligations.
+
+3. **Suppression des exigences de communication et de gestion des réclamations**
+   - **Ancienne version** : Obligations de communication d'informations claires, exactes et non trompeuses, et de gestion des réclamations.
+   - **Nouvelle version** : Suppression de ces obligations.
+   - **Impact** : Potentiel impact négatif sur la protection des clients et la transparence.
+
+4. **Simplification de la procédure de suspension et de radiation**
+   - **Ancienne version** : Disposition permettant à l'AMF de suspendre d'office l'enregistrement d'un prestataire.
+   - **Nouvelle version** : Suppression de cette disposition, maintien des conditions de radiation sans la procédure d'avis conforme de l'ACPR.
+   - **Impact** : Simplification des procédures pour les prestataires.
+
+5. **Maintien des obligations de déclaration et de publication**
+   - **Ancienne et nouvelle versions** : Obligations de déclaration auprès de l'AMF et publication de la liste des prestataires enregistrés.
+   - **Impact** : Continuité dans la transparence et la conformité.
+
+#### Portée et Conséquences
+
+1. **Simplification et allègement des obligations**
+   - **Impact global** : Réduction des charges administratives et des coûts de conformité pour les prestataires, facilitant leur opérationnalité.
+
+2. **Maintien des exigences essentielles**
+   - **Impact global** : Assure un niveau de sécurité et de conformité suffisant, notamment en matière de lutte contre le blanchiment et le financement du terrorisme.
+
+3. **Impact sur la protection des clients**
+   - **Impact global** : La suppression des obligations de communication et de gestion des réclamations pourrait réduire la transparence et les recours disponibles pour les clients en cas de litige.
+
+#### Modifications Techniques et de Précision
+
+1. **Modification de l'autorité consultative**
+   - **Ancienne version** : AMF pouvait solliciter l'avis de l'autorité mentionnée à l'article L. 2321-1 du code de la défense.
+   - **Nouvelle version** : AMF peut solliciter l'avis de l'autorité nationale en charge de la sécurité des systèmes d'information.
+   - **Impact** : Amélioration de la clarté et de l'efficacité des consultations.
+
+2. **Seuil de détention de capital ou de droits de vote**
+   - **Ancienne version** : Seuil de 10 %.
+   - **Nouvelle version** : Seuil porté à 25 %.
+   - **Impact** : Réduction du nombre de personnes soumises à cette exigence, simplification administrative.
+
+3. **Terminologie et précision linguistique**
+   - **Ancienne version** : Termes généraux.
+   - **Nouvelle version** : Termes plus précis.
+   - **Impact** : Réduction des ambiguïtés, meilleure compréhension et application des dispositions légales.
+
+#### Conclusion
+Les modifications apportées aux articles de loi visent principalement à simplifier et clarifier les obligations réglementaires pour les prestataires de services, tout en maintenant les exigences essentielles de conformité. Ces ajustements devraient améliorer la clarté réglementaire et potentiellement alléger certaines obligations administratives, tout en maintenant un cadre rigoureux pour la sécurité et la transparence des services sur actifs numériques. Toutefois, la réduction de certaines obligations pourrait avoir un impact sur la protection des clients, nécessitant une vigilance accrue de la part des régulateurs et des prestataires.

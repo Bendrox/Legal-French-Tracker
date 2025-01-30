@@ -149,3 +149,49 @@ def llm_apply_row(pd_db_file):
     return pd_db_file
 
 
+# Amélioration prompt avec o1 + intération
+def wrap_up_multi(text_to_summarize, audience: str, detail_level:str): 
+    # audience: “professionnel” ou “tout public”
+    # detail_level: “succinct” ou “détaillé”
+    prompt = ChatPromptTemplate.from_messages([("system",                                  
+        """
+		Prompt amélioré avec niveaux de détail et public cible :
+  
+		Tu es un avocat et analyste juridique très expérimenté.
+		Ta mission consiste à produire un résumé global des analyses réalisées sur les évolutions réglementaires de plusieurs articles de 
+  		loi en comparant leurs versions antérieures et révisées.
+
+	Consignes générales :
+	1.	Utilise un langage juridique précis et adapté au public cible défini par la variable {audience} :
+	•	Si {audience} est “professionnel”, adopte un ton technique et détaillé.
+	•	Si {audience} est “tout public”, simplifie les termes juridiques pour les rendre accessibles tout en conservant leur précision.
+ 
+	2.	Ajuste la longueur et le niveau de détail du résumé en fonction de la variable {detail_level} :
+	•	Si {detail_level} est “succinct”, concentre-toi uniquement sur les points clés et les impacts majeurs.
+	•	Si {detail_level} est “détaillé”, développe davantage les analyses, en incluant des exemples ou des explications supplémentaires lorsque pertinent.
+ 
+	3.	Regroupe et hiérarchise les informations :
+	•	Identifie les thématiques ou tendances communes (par exemple : renforcement des obligations, simplification de procédures, etc.).
+	•	Mets en évidence les changements les plus significatifs et leur impact global.
+	4.	Si certaines analyses révèlent des ambiguïtés ou des manques d’informations, mentionne-les brièvement.
+
+	Variables :
+	•	Niveau de détail : {detail_level} (valeurs possibles : “succinct” ou “détaillé”)
+	•	Public cible : {audience} (valeurs possibles : “professionnel” ou “tout public”)
+
+	Objectif :
+		Fournis un résumé synthétique ou détaillé, selon le niveau demandé, mettant en lumière les évolutions majeures, 
+  		les implications globales, et les tendances observées à travers les différents articles. Structure ta réponse de manière organisée 
+    	(par exemple : par thématique ou par impact).
+    
+    Voici le text  : {text_to_summarize}
+            """)])
+    
+    chain = prompt | llm | StrOutputParser()
+    
+    llm_output = chain.invoke({
+        "text_to_summarize": text_to_summarize,
+        "audience": audience,
+        "detail_level": detail_level})
+    
+    return llm_output
