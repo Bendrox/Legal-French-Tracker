@@ -67,7 +67,7 @@ if filtrer_numero == "Oui":
 Active_LLM = st.radio("Voulez vous avoir une analyse des changements de chaque article suivi d'un résumé des 10 premiers changements ?  ", ("Non", "Oui"))
 
 if Active_LLM == "Oui":
-    audience = st.selectbox("Sélectionnez le type d'audience pour l'analyse juridique:", options=["Tout Public", "Professionnel (DAJ)"])
+    audience = st.selectbox("Sélectionnez le type d'audience pour l'analyse juridique:", options=["Tout Public", "Professionnel"])
     detail = st.selectbox("Sélectionnez le niveau de détail :", options= ["Succinct", "Détaillé"])
 
 # Bouton exécution
