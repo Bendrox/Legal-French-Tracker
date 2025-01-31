@@ -154,13 +154,12 @@ if st.button("Lancer le tracker"):
             summary = wrap_up_multi(text_variable, audience, detail)
             st.success("Étape 7 - Analyse juridique réussie")
             # export to txt: 
-            text_file = open("/Users/oussa/Desktop/Github_perso/Legal_FR_Tracker/data_output_streamlit/Output_summary_proXsuc_vStrmlit.txt", "w")
-            text_file.write(summary)
-            text_file.close()
+            #text_file = open("/Users/oussa/Desktop/Github_perso/Legal_FR_Tracker/data_output_streamlit/Output_summary_proXsuc_vStrmlit.txt", "w")
+            #text_file.write(summary)
+            #text_file.close()
         
             st.success("Étape 7 - Analyse juridique exportée")
             st.write(f""" {summary}""")
-            
         else :  
             st.success("Étape 7 - Absence de comparaison")
         

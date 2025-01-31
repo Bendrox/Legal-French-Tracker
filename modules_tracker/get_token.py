@@ -22,7 +22,6 @@ def get_token():
     'scope': 'openid'}
     response = requests.post(token_url, data=token_data)
     print(f"DEBUG - Status Code: {response.status_code}")
-    print(f"DEBUG - Response Text: {response.text}")  # Affiche le message d'erreur
     response.raise_for_status()  # vérif  erreurs
     # récup  jeton
     token_info = response.json()
@@ -39,7 +38,6 @@ def get_token_prod():
     }
     response = requests.post(token_url, data=token_data)
     print(f"DEBUG - Status Code: {response.status_code}")
-    print(f"DEBUG - Response Text: {response.text}")
     response.raise_for_status()  # Vérifie les erreurs
     token_info = response.json()
     access_token = token_info['access_token']

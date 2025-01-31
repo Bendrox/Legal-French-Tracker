@@ -10,10 +10,6 @@ from langchain_core.prompts import ChatPromptTemplate
 from langchain_core.output_parsers import StrOutputParser
 
 
-# credentials : 
-import sys
-import os
-
 # Ajouter le dossier parent à sys.path pour pouvoir importer credentials.py
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
 import credentials  
