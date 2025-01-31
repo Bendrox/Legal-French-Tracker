@@ -9,9 +9,7 @@ from credentials import *
 from credentials import client_id, client_secret, client_id_pro, client_secret_pro
 
 print(f"DEBUG - client_id: {client_id}")
-print(f"DEBUG - client_secret: {client_secret[:5]}******")  # Masquer la clé
-print(f"DEBUG - client_id_pro: {client_id_pro}")
-print(f"DEBUG - client_secret_pro: {client_secret_pro[:5]}******")# Masquer la clé
+print(f"DEBUG - client_secret: {client_secret}") 
 
 
 def get_token():
