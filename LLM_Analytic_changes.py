@@ -68,6 +68,7 @@ def llm_legal_change_com_v2(old_version, new_version):
 	2.	Base-toi uniquement sur les informations fournies, sans inventer ni extrapoler.
 	3.	Si tu ne comprends pas un point ou si les informations sont insuffisantes, signale-le clairement.
 	4.	Ne récite pas le texte en intégralité : concentre-toi sur l’analyse et la comparaison.
+    5.  Inclu les références de textes réglementaires. 
 
 	Contenu à analyser :
 	•	Ancienne version : {old_version}
@@ -101,6 +102,7 @@ def llm_legal_change_com_v3(old_version, new_version):
 	2.	Base-toi uniquement sur les informations fournies, sans inventer ni extrapoler.
 	3.	Si tu ne comprends pas un point ou si les informations sont insuffisantes, signale-le clairement.
 	4.	Ne récite pas le texte en intégralité : concentre-toi sur l’analyse et la comparaison.
+    5.  Inclu les références de textes réglementaires. 
 
 	Contenu à analyser :
 	•	Ancienne version : {old_version}
@@ -108,7 +110,6 @@ def llm_legal_change_com_v3(old_version, new_version):
 
 	Objectif :
     Produis un commentaire juridique concis, en mettant en évidence les principaux changements, leur portée et leurs éventuelles conséquences. N’inclus dans ta réponse que l’analyse finale.
-
             """)])
     
     chain = prompt | llm | StrOutputParser()
@@ -170,6 +171,8 @@ def wrap_up_multi(text_to_summarize, audience: str, detail_level:str):
 	•	Identifie les thématiques ou tendances communes (par exemple : renforcement des obligations, simplification de procédures, etc.).
 	•	Mets en évidence les changements les plus significatifs et leur impact global.
 	4.	Si certaines analyses révèlent des ambiguïtés ou des manques d’informations, mentionne-les brièvement.
+    5.  Inclu les références de textes réglementaires. 
+
 
 	Variables :
 	•	Niveau de détail : {detail_level} (valeurs possibles : “succinct” ou “détaillé”)
