@@ -1,62 +1,33 @@
-### Résumé des Évolutions Réglementaires
+### Résumé des Évolutions Réglementaires des Articles de Loi
 
-#### Public cible : Professionnel
-#### Niveau de détail : Succinct
+#### Variables :
+- **Niveau de détail** : Succinct
+- **Public cible** : Tout public
 
-**Thématique 1 : Suppression et Simplification des Obligations**
+#### Thématiques et Changements Significatifs :
 
-1. **Suppression de certaines obligations spécifiques** :
-   - Les obligations relatives à la sécurité et au contrôle interne, à la gestion des conflits d'intérêts, à la résilience et à la sécurité des systèmes informatiques, ainsi qu'à la politique de conservation et de restitution des actifs numériques ont été supprimées.
+1. **Suppression de certaines exigences** :
+   - Les obligations concernant la sécurité, le contrôle interne, la gestion des conflits d'intérêts et les systèmes informatiques ont été supprimées.
+   - Les obligations spécifiques pour les prestataires de services en actifs numériques, telles que la conclusion de conventions avec les clients et la restitution des actifs numériques, ont également été supprimées.
 
-2. **Simplification des exigences de conformité** :
-   - Les exigences concernant la communication d'informations claires, l'avertissement des risques, la publication des politiques tarifaires, et la gestion des réclamations des clients ont été omises.
+2. **Simplification des obligations d'information** :
+   - Les exigences relatives à la communication d'informations claires et à la gestion des réclamations des clients ont été supprimées.
 
-**Thématique 2 : Réduction des Pouvoirs de l'AMF**
+3. **Réduction des pouvoirs de l'AMF** :
+   - L'Autorité des marchés financiers (AMF) ne peut plus vérifier la sécurité des systèmes d'information des prestataires ni suspendre leur enregistrement en cas de menace pour la stabilité du marché.
 
-1. **Réduction des pouvoirs de l'AMF** :
-   - La disposition permettant à l'AMF de vérifier la sécurité des systèmes d'information des prestataires et de solliciter l'avis de l'autorité mentionnée à l'article L. 2321-1 du code de la défense a été retirée.
+4. **Clarification des conditions d'enregistrement** :
+   - Les conditions pour qu'un service soit considéré comme fourni en France sont désormais définies par le règlement général de l'AMF.
+   - La procédure d'avis conforme de l'Autorité de contrôle prudentiel et de résolution (ACPR) pour l'enregistrement des prestataires est maintenue.
 
-**Thématique 3 : Clarification et Maintien des Exigences**
+5. **Maintien des obligations de déclaration et de radiation** :
+   - Les obligations de déclaration auprès de l'AMF en cas de modification affectant le respect des obligations par un prestataire sont maintenues.
+   - Les conditions de radiation d'un prestataire par l'AMF, sur avis conforme de l'ACPR, sont également maintenues.
 
-1. **Clarification des conditions de radiation** :
-   - La condition permettant à l'AMF de radier un prestataire inactif depuis au moins six mois a été supprimée.
+#### Implications Globales :
+- **Simplification et Réduction des Obligations** : Les modifications visent à simplifier et réduire les obligations des prestataires de services en actifs numériques, tout en maintenant les exigences fondamentales d'enregistrement et de déclaration.
+- **Réduction des Pouvoirs de l'AMF** : La réduction des pouvoirs de l'AMF pourrait avoir des implications sur la surveillance et la stabilité du marché des actifs numériques.
+- **Clarification et Adaptation** : Les changements apportent une clarification des conditions d'enregistrement et adaptent les obligations aux réalités locales, notamment pour la Nouvelle-Calédonie.
 
-2. **Maintien des exigences de lutte contre le blanchiment et le financement du terrorisme** :
-   - Les obligations relatives à la lutte contre le blanchiment des capitaux et le financement du terrorisme sont maintenues.
-
-**Thématique 4 : Simplification et Clarification des Textes**
-
-1. **Suppression de la référence au règlement (UE) 2023/1114** :
-   - La nouvelle version ne mentionne plus ce règlement, simplifiant ainsi le texte.
-
-2. **Restriction des services concernés** :
-   - La réglementation se concentre sur les services mentionnés aux 1° à 4° de l'article L. 54-10-2, sans inclure les services sur crypto-actifs définis par le règlement européen.
-
-3. **Clarification des interdictions** :
-   - L'interdiction d'utiliser des dénominations trompeuses s'applique spécifiquement aux prestataires des services mentionnés aux mêmes 1° et 4°.
-
-**Thématique 5 : Ajustements et Clarifications**
-
-1. **Modification de l'autorité consultative** :
-   - L'AMF peut solliciter l'avis de l'autorité nationale en charge de la sécurité des systèmes d'information.
-
-2. **Seuil de détention de capital** :
-   - Le seuil de détention de capital par des personnes physiques passe de "plus de 10 %" à "plus de 25 %".
-
-3. **Clarification linguistique et suppression de redondances** :
-   - Des ajustements mineurs ont été effectués pour améliorer la clarté et la précision du texte.
-
-**Thématique 6 : Extension et Adaptation des Obligations**
-
-1. **Extension des entités concernées** :
-   - L'interdiction de tenir des comptes ou livrets d'épargne anonymes s'étend aux personnes mentionnées aux 1° à 7° bis de l'article L. 561-2.
-
-2. **Ajout des Conseillers en Investissements Participatifs** :
-   - Inclusion explicite des conseillers en investissements participatifs dans les entités assujetties aux obligations.
-
-3. **Révision des Professions Juridiques** :
-   - Inclusion des commissaires-priseurs judiciaires dans les professions juridiques mentionnées.
-
-**Conclusion**
-
-Les modifications apportées aux articles de loi visent principalement à simplifier et clarifier les obligations des prestataires de services financiers, à réduire les pouvoirs de l'AMF, et à adapter les réglementations aux évolutions du marché et aux spécificités locales. Les exigences essentielles en matière de lutte contre le blanchiment des capitaux et le financement du terrorisme sont maintenues, tandis que certaines obligations spécifiques et redondances ont été supprimées pour une meilleure lisibilité et application des textes.
+#### Conclusion :
+Les modifications apportées aux articles de loi analysés simplifient les obligations des prestataires de services en actifs numériques, réduisent les pouvoirs de l'AMF, et clarifient les conditions d'enregistrement. Ces changements visent à rendre la réglementation plus accessible et adaptée aux évolutions du marché, tout en maintenant un cadre de surveillance et de déclaration essentiel pour la stabilité et la sécurité du marché des actifs numériques.

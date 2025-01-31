@@ -1,8 +1,8 @@
-import os
 from dotenv import load_dotenv
 
 load_dotenv()
 
+import os
 import requests
 from IPython.display import display
 from credentials import *
