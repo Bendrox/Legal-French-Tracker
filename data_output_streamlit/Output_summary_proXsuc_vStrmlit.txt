@@ -1,105 +1,62 @@
 ### Résumé des Évolutions Réglementaires
 
-#### Public cible : Professionnel (DAJ)
+#### Public cible : Professionnel
 #### Niveau de détail : Succinct
-
----
 
 **Thématique 1 : Suppression et Simplification des Obligations**
 
 1. **Suppression de certaines obligations spécifiques** :
-   - Les obligations relatives à la sécurité, au contrôle interne, à la gestion des conflits d'intérêts, à la résilience et à la sécurité des systèmes informatiques ont été supprimées.
-   - Les obligations spécifiques pour les prestataires fournissant certains services, telles que la conclusion de conventions avec les clients et la mise en place de moyens pour la restitution des actifs numériques, ont été retirées.
+   - Les obligations relatives à la sécurité et au contrôle interne, à la gestion des conflits d'intérêts, à la résilience et à la sécurité des systèmes informatiques, ainsi qu'à la politique de conservation et de restitution des actifs numériques ont été supprimées.
 
 2. **Simplification des exigences de conformité** :
-   - Les exigences concernant la communication d'informations claires, l'avertissement des risques, la publication des politiques tarifaires et la gestion des réclamations ont été supprimées.
-
-**Impact Global** :
-   - Réduction des obligations imposées aux prestataires de services, simplification des procédures de conformité.
-
----
+   - Les exigences concernant la communication d'informations claires, l'avertissement des risques, la publication des politiques tarifaires, et la gestion des réclamations des clients ont été omises.
 
 **Thématique 2 : Réduction des Pouvoirs de l'AMF**
 
 1. **Réduction des pouvoirs de l'AMF** :
-   - Retrait de la disposition permettant à l'AMF de vérifier la sécurité des systèmes d'information des prestataires.
-   - Suppression de la possibilité pour l'AMF de radier un prestataire de sa propre initiative ou à l'initiative de l'Autorité de contrôle prudentiel et de résolution.
+   - La disposition permettant à l'AMF de vérifier la sécurité des systèmes d'information des prestataires et de solliciter l'avis de l'autorité mentionnée à l'article L. 2321-1 du code de la défense a été retirée.
 
-**Impact Global** :
-   - Diminution des capacités de surveillance et de sanction de l'AMF.
+**Thématique 3 : Clarification et Maintien des Exigences**
 
----
+1. **Clarification des conditions de radiation** :
+   - La condition permettant à l'AMF de radier un prestataire inactif depuis au moins six mois a été supprimée.
 
-**Thématique 3 : Maintien de certaines Exigences**
+2. **Maintien des exigences de lutte contre le blanchiment et le financement du terrorisme** :
+   - Les obligations relatives à la lutte contre le blanchiment des capitaux et le financement du terrorisme sont maintenues.
 
-1. **Maintien des exigences de déclaration** :
-   - Obligation pour les prestataires de déclarer toute modification affectant le respect des obligations à l'AMF.
+**Thématique 4 : Simplification et Clarification des Textes**
 
-2. **Maintien de la publication de la liste des prestataires** :
-   - La liste des prestataires enregistrés continue d'être publiée par l'AMF.
+1. **Suppression de la référence au règlement (UE) 2023/1114** :
+   - La nouvelle version ne mentionne plus ce règlement, simplifiant ainsi le texte.
 
-**Impact Global** :
-   - Maintien des exigences de transparence et de déclaration pour les prestataires.
+2. **Restriction des services concernés** :
+   - La réglementation se concentre sur les services mentionnés aux 1° à 4° de l'article L. 54-10-2, sans inclure les services sur crypto-actifs définis par le règlement européen.
 
----
-
-**Thématique 4 : Enregistrement et Transparence**
-
-1. **Enregistrement préalable** :
-   - Obligation d'enregistrement préalable auprès de l'AMF pour les prestataires de services financiers.
-
-2. **Interdiction d'utilisation de dénominations trompeuses** :
-   - Interdiction explicite pour les non-enregistrés d'utiliser des dénominations pouvant induire en erreur.
-
-**Impact Global** :
-   - Renforcement du contrôle et de la transparence sur le marché financier.
-
----
+3. **Clarification des interdictions** :
+   - L'interdiction d'utiliser des dénominations trompeuses s'applique spécifiquement aux prestataires des services mentionnés aux mêmes 1° et 4°.
 
 **Thématique 5 : Ajustements et Clarifications**
 
-1. **Changement de l'autorité consultative** :
-   - L'AMF peut désormais solliciter l'avis de l'autorité nationale en charge de la sécurité des systèmes d'information.
+1. **Modification de l'autorité consultative** :
+   - L'AMF peut solliciter l'avis de l'autorité nationale en charge de la sécurité des systèmes d'information.
 
-2. **Modification du seuil de détention de capital** :
-   - Seuil modifié de "plus de 10 %" à "plus de 25 %".
+2. **Seuil de détention de capital** :
+   - Le seuil de détention de capital par des personnes physiques passe de "plus de 10 %" à "plus de 25 %".
 
-3. **Clarification et précision** :
-   - Ajout de précisions linguistiques pour renforcer l'exigence de diligence dans le traitement des plaintes.
+3. **Clarification linguistique et suppression de redondances** :
+   - Des ajustements mineurs ont été effectués pour améliorer la clarté et la précision du texte.
 
-**Impact Global** :
-   - Ajustements visant à clarifier et préciser les exigences réglementaires.
+**Thématique 6 : Extension et Adaptation des Obligations**
 
----
+1. **Extension des entités concernées** :
+   - L'interdiction de tenir des comptes ou livrets d'épargne anonymes s'étend aux personnes mentionnées aux 1° à 7° bis de l'article L. 561-2.
 
-**Thématique 6 : Extension et Simplification**
+2. **Ajout des Conseillers en Investissements Participatifs** :
+   - Inclusion explicite des conseillers en investissements participatifs dans les entités assujetties aux obligations.
 
-1. **Extension des entités couvertes** :
-   - Inclusion des personnes mentionnées aux 7° bis et 7° quater de l'article L. 561-2.
+3. **Révision des Professions Juridiques** :
+   - Inclusion des commissaires-priseurs judiciaires dans les professions juridiques mentionnées.
 
-2. **Suppression de certaines références spécifiques** :
-   - Simplification de la rédaction en supprimant des références détaillées.
+**Conclusion**
 
-3. **Ajout d'un nouveau paragraphe (III)** :
-   - Permet aux entreprises mères de groupes d'accéder aux informations relatives aux déclarations prévues.
-
-**Impact Global** :
-   - Élargissement du champ des entités couvertes et simplification des dispositions.
-
----
-
-**Thématique 7 : Adaptations pour la Nouvelle-Calédonie**
-
-1. **Références législatives et réglementaires** :
-   - Adaptation des références législatives et réglementaires spécifiques à la Nouvelle-Calédonie.
-
-2. **Conversion des montants financiers** :
-   - Conversion des montants en euros en francs CFP.
-
-**Impact Global** :
-   - Adaptation des dispositions législatives aux spécificités locales de la Nouvelle-Calédonie.
-
----
-
-**Conclusion** :
-Les modifications apportées aux articles de loi visent principalement à simplifier et réduire les obligations des prestataires de services, tout en maintenant certaines exigences de base en matière de déclaration et de publication. Les pouvoirs de l'AMF ont été réduits, et des mesures de contrôle plus strictes ont été introduites pour l'exercice de la profession de prestataire de services financiers. Les ajustements apportés visent également à clarifier et préciser les exigences réglementaires, tout en adaptant les dispositions aux spécificités locales, notamment pour la Nouvelle-Calédonie.
+Les modifications apportées aux articles de loi visent principalement à simplifier et clarifier les obligations des prestataires de services financiers, à réduire les pouvoirs de l'AMF, et à adapter les réglementations aux évolutions du marché et aux spécificités locales. Les exigences essentielles en matière de lutte contre le blanchiment des capitaux et le financement du terrorisme sont maintenues, tandis que certaines obligations spécifiques et redondances ont été supprimées pour une meilleure lisibilité et application des textes.
