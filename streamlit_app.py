@@ -4,7 +4,6 @@ import io
 import os
 from dotenv import load_dotenv
 from langchain_community.callbacks.manager import get_openai_callback
-from credentials import client_id, client_secret
 
 load_dotenv()
 

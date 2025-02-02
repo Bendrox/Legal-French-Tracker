@@ -1,7 +1,6 @@
 
 import requests
 from modules_tracker.get_token import get_token, get_token_prod
-from modules_tracker.get_token import get_token, get_token_prod
 
 access_token = get_token()
 access_token_prod = get_token_prod()

@@ -1,12 +1,12 @@
 from dotenv import load_dotenv
-
-load_dotenv()
-
 import os
 import requests
 from IPython.display import display
-from credentials import *
 
+load_dotenv()
+
+client_id = os.getenv("client_id")
+client_secret = os.getenv("client_secret")
 print(f"DEBUG - client_id: {client_id}")
 print(f"DEBUG - client_secret: {client_secret}") 
 

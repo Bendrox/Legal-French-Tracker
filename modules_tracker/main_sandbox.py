@@ -1,5 +1,4 @@
 from modules_tracker.get_token import get_token, get_token_prod
-from credentials import client_id, client_secret
 from modules_tracker.LegiFR_call_funct import *
 from modules_tracker.dataprep_funct import *
 import requests
