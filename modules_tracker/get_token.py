@@ -6,7 +6,6 @@ import os
 import requests
 from IPython.display import display
 from credentials import *
-from credentials import client_id, client_secret, client_id_pro, client_secret_pro
 
 print(f"DEBUG - client_id: {client_id}")
 print(f"DEBUG - client_secret: {client_secret}") 
@@ -17,8 +16,8 @@ def get_token():
     #inject cred 
     token_data = {
     'grant_type': 'client_credentials',
-    'client_id': client_id,
-    'client_secret': client_secret,
+    'client_id': os.getenv("client_id") ,
+    'client_secret': os.getenv("client_secret"),
     'scope': 'openid'}
     response = requests.post(token_url, data=token_data)
     print(f"DEBUG - Status Code: {response.status_code}")
@@ -32,8 +31,8 @@ def get_token_prod():
     token_url = 'https://oauth.piste.gouv.fr/api/oauth/token'  # URL de production
     token_data = {
         'grant_type': 'client_credentials',
-        'client_id': client_id_pro,
-        'client_secret': client_secret_pro,
+        'client_id': os.getenv("client_id_pro"),
+        'client_secret': os.getenv("client_secret_pro"),
         'scope': 'openid'
     }
     response = requests.post(token_url, data=token_data)
