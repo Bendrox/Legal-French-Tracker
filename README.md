@@ -4,7 +4,8 @@
 La législation française est de plus en plus complexe, le suivi des évolutions réglementaires est chronophage pour les juristes. L'outil développé propose de suivre les évolutions réglementaires sur un périmètre donné (Code de commerce, code civil...) et une période (année, mois) afin de faciliter les évolutions réglementaires. L'outil commente les changements réglementaire et propose un résumé des dernières évolutions dans le but  de faire gagner du temps. Les derniers changements réglementaires peuvent être décisifs lors d'analyses juridiques ou pour la définition d'une approche a une problématique légale.
 
 # Objectifs
-Développer un outil qui récupère les dernières évolutions réglementaires dans les textes juridiques français, compare le contenu des articles (ancienne version vs nouvelle version). La restituons de ces données devra se faire dans un format tabulaire, classée de façon chronologique.
+Développer un outil qui récupère les dernières évolutions réglementaires dans les textes juridiques français, compare le contenu des articles (ancienne version vs nouvelle version). La restituons de ces données devra se faire dans un format tabulaire, classée de façon chronologique. L'outil est également 
+capable de fournir un résumé complet avec les références de l'ensemble des changements.
 
 # Prérequis
 - Python 3.13.0
@@ -26,14 +27,14 @@ Développer un outil qui récupère les dernières évolutions réglementaires d
 
 # Execution de la solution : 
 Option 1: Les fichiers pour construire la base de données (tabulaire) sans passer par l'interface Streamlit sont : 
-- main.py (utilise un environnement sandbox de l'API Légifrance).
-- main_prod.py (utilise un environnement prod de l'API Légifrance. Aucun gain notable en performances enregistré).
+- main.py :utilise un environnement sandbox de l'API Légifrance.
+- main_prod.py :utilise un environnement prod de l'API Légifrance. Aucun gain notable en performances enregistré mais une fiabilité des réponses accrue. 
 
-	-> Pour exécuter la construction de la base de donnée : python3 main.py ou python3 main_prod.py ou python3 main_tqdm.py depuis le terminal.
+	-> Pour exécuter la construction de la base de donnée : python3 main_prod.py depuis le terminal.
 
 Option 2: Les fichiers pour construire la base de données (tabulaire) en utilisant l'interface Streamlit sont : 
 - app.py
-	-> Pour démarrer l'application Streamlit : python3 app.py depuis le terminal.
+	-> Pour démarrer l'application Streamlit : python3 streamlit_app.py depuis le terminal.
 
 Autres fichiers : 
 -   Explore_LégiFrance_API.ipynb : notebook pour exploration des call api, est aussi une version notebook de l'application. 
@@ -47,7 +48,7 @@ Autres fichiers :
 French legislation is becoming increasingly complex, and tracking regulatory changes is a time-consuming task for legal professionals. The tool developed aims to monitor regulatory changes within a specific scope (e.g., Commercial Code, Civil Code) and time frame (year, month), streamlining the process of staying updated. The tool provides commentary on regulatory changes and summarizes the latest developments, saving valuable time. Recent regulatory changes can be critical for legal analysis or when defining an approach to a legal issue.
 
 # Goals
-Develop a tool that retrieves the latest regulatory changes in French legal texts and compares article content (old version vs. new version). The data must be presented in a tabular format, organized chronologically.
+Develop a tool that retrieves the latest regulatory changes in French legal texts and compares article content (old version vs. new version). The data must be presented in a tabular format, organized chronologically. The tool is also able to provide a complete summary with references of all changes.
 
 # Features
 - Extract the latest changes within the scope defined by the user (code and dates).
@@ -70,10 +71,10 @@ Develop a tool that retrieves the latest regulatory changes in French legal text
 # Run the solution : 
 Option 1: build the database (tabular format) without using the Streamlit interface:
 - main.py (uses a sandbox environment of the Légifrance API).
-- main_prod.py (uses a production environment of the Légifrance API; no significant performance improvements recorded).
+- main_prod.py (uses a production environment of the Légifrance API; no significant performance improvements recorded) but a significate reliability in the responses.
 
 Option 2: build the database (tabular format) using the Streamlit interface:
-- streamlit run app.py in terminal to execute the Streamlit application.
+- streamlit run streamlit_app.py in terminal to execute the Streamlit application.
 
 Other files:
 - Explore_LégiFrance_API.ipynb: A notebook for exploring API calls, which also serves as a notebook version of the application.
