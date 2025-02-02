@@ -3,24 +3,21 @@ import os
 import tiktoken
 import sys
 import pandas as pd 
-from credentials import *
-
 from langchain_openai import AzureChatOpenAI
 from langchain_core.prompts import ChatPromptTemplate
 from langchain_core.output_parsers import StrOutputParser
 
+from dotenv import load_dotenv
 
-# Ajouter le dossier parent à sys.path pour pouvoir importer credentials.py
-sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
-import credentials  
+load_dotenv()
 
 
 # LLM definition co
 llm = AzureChatOpenAI(
-    azure_endpoint= Azure_OpenAI_OB_Endpoint ,
+    azure_endpoint= os.getenv("Azure_OpenAI_OB_Endpoint") ,
     openai_api_version="2024-02-15-preview",
     model_name="gpt-4o",
-    openai_api_key= Azure_OpenAI_OB_Key,
+    openai_api_key= os.getenv("Azure_OpenAI_OB_Key"),
     openai_api_type="azure",
     temperature=0,
     deployment_name="gpt-4o-deploy",

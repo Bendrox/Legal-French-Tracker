@@ -3,18 +3,19 @@ import pandas as pd
 import io
 import os
 from dotenv import load_dotenv
+from langchain_community.callbacks.manager import get_openai_callback
+from credentials import client_id, client_secret
 
 load_dotenv()
 
 # Import de vos fonctions et variables
-from modules_tracker.get_token import get_token, get_token_prod
-from credentials import client_id, client_secret
 from modules_tracker.LegiFR_call_sandbox_funct import *
 from modules_tracker.LegiFR_call_prod_funct import *
 from modules_tracker.dataprep_funct import *
-from LLM_Analytic_changes import llm_apply_row, wrap_up_multi
-from LLM_Analytic_changes import *
-from langchain_community.callbacks.manager import get_openai_callback
+from modules_LLM.LLM_Analytic_changes import *
+from modules_tracker.get_token import *
+
+
 
 # Titre centré et stylisé
 st.markdown(
