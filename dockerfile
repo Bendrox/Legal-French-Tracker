@@ -4,12 +4,12 @@ FROM python:3.13.1
 # Définir le répertoire de travail
 WORKDIR /app
 
-# Copier les fichiers de l'application
+# Copier les fichiers de l'app
 COPY requirements.txt ./
 RUN pip install --no-cache-dir -r requirements.txt
 COPY . .
 
-# Exposer le port utilisé (par exemple, pour Streamlit)
+# Expose le port utilisé 
 EXPOSE 8501
 
 # Lancer l’application
