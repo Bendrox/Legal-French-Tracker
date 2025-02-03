@@ -7,13 +7,13 @@ La législation française devient de plus en plus complexe, et le suivi des év
 
 🎯 Objectifs
 
-Récupération automatique des dernières évolutions réglementaires.
+- Récupération automatique des dernières évolutions réglementaires.
 
-Comparaison des textes (ancienne vs nouvelle version).
+- Comparaison des textes (ancienne vs nouvelle version).
 
-Restitution des changements sous un format tabulaire, classé chronologiquement.
+- Restitution des changements sous un format tabulaire, classé chronologiquement.
 
-Génération de résumés clairs et référencés.
+- Génération de résumés clairs et référencés.
 
 🔍 Fonctionnalités
 
@@ -21,35 +21,35 @@ Génération de résumés clairs et référencés.
 
 🛠 Prérequis
 
-Python 3.13.0
+- Python 3.13.0
 
-Clé API Légifrance : Inscription sur le portail développeur de Légifrance
+- Clé API Légifrance : Inscription sur le portail développeur de Légifrance
 
-Accès à GPT-4o
+- Accès à GPT-4o
 
 
 ⚙️ Fonctionnement de la solution
 
-Récupération des modifications législatives via l'API Légifrance.
+- Récupération des modifications législatives via l'API Légifrance.
 
-Nettoyage et transformation des données en format tabulaire.
+- Nettoyage et transformation des données en format tabulaire.
 
-Enrichissement des données via d'autres appels API pour comparer les versions.
+- Enrichissement des données via d'autres appels API pour comparer les versions.
 
-Utilisation de GPT-4o pour analyser et commenter les changements.
+- Utilisation de GPT-4o pour analyser et commenter les changements.
 
-Génération d'un résumé clair et synthétique.
+- Génération d'un résumé clair et synthétique.
 
 🚀 Exécution de la solution
 
-Option 1 : Construction de la base de données sans interface Streamlit
+- Option 1 : Construction de la base de données sans interface Streamlit
 
 Exécute l'un des fichiers suivants :
 
 python3 main.py  # Mode sandbox de l'API Légifrance
 python3 main_prod.py  # Mode production de l'API Légifrance
 
-Option 2 : Exécution avec l'interface Streamlit
+- Option 2 : Exécution avec l'interface Streamlit
 
 streamlit run streamlit_app.py
 
@@ -77,31 +77,44 @@ Develop a tool that retrieves the latest regulatory changes in French legal text
 
 🔍 Features
 - Extract the latest changes within the scope defined by the user (code and dates).
+
 - Enrich the data with the content of each article, showing both its previous and updated versions.
+
 - Provide line-by-line commentary on regulatory changes that is relevant, precise, and concise while adhering to legal language.
+
 - Generate a summary that is as relevant and accurate as possible.
 
 🛠 Prerequisites
 - Python 3.13.0
+
 - Register on the Légifrance Developer Portal to obtain an API key: https://piste.gouv.fr
+
 - Légifrance API Key to access the Légifrance API.
+
 - Access to GPT-4o.
 
 ⚙️ How the solution is working : 
 - Legislative text modifications are retrieved from the Légifrance API, processed, cleaned, and transformed into a tabular format.
+
 - The data is enriched with additional API calls to retrieve the content of articles (old version vs. new version).
+
 - An LLM (GPT-4) is used to comment on the changes.
+
 - The LLM summarizes the comments and provides a user-friendly output.
 
 🚀  Run the solution : 
-Option 1: build the database (tabular format) without using the Streamlit interface:
-- main.py (uses a sandbox environment of the Légifrance API).
-- main_prod.py (uses a production environment of the Légifrance API; no significant performance improvements recorded) but a significate reliability in the responses.
+- Option 1: build the database (tabular format) without using the Streamlit interface:
 
-Option 2: build the database (tabular format) using the Streamlit interface:
-- streamlit run streamlit_app.py in terminal to execute the Streamlit application.
+main.py (uses a sandbox environment of the Légifrance API).
+
+main_prod.py (uses a production environment of the Légifrance API; no significant performance improvements recorded) but a significate reliability in the responses.
+
+- Option 2: build the database (tabular format) using the Streamlit interface:
+
+streamlit run streamlit_app.py in terminal to execute the Streamlit application.
 
 Other files:
+
 - Explore_LégiFrance_API.ipynb: A notebook for exploring API calls, which also serves as a notebook version of the application.
 - modules_tracker: Contains .py files for main, which include API call functions, authentication mechanisms, and data preparation functions (cleaning and formatting).
 
