@@ -1,4 +1,4 @@
-📜 # Legal French Tracker
+# 📜 Legal French Tracker
 
    
 🚀 Problématique
@@ -72,6 +72,7 @@ streamlit run streamlit_app.py
 French legislation is becoming increasingly complex, and tracking regulatory changes is a time-consuming task for legal professionals. The tool developed aims to monitor regulatory changes within a specific scope (e.g., Commercial Code, Civil Code) and time frame (year, month), streamlining the process of staying updated. The tool provides commentary on regulatory changes and summarizes the latest developments, saving valuable time. Recent regulatory changes can be critical for legal analysis or when defining an approach to a legal issue.
 
 🎯 Goals
+
 Develop a tool that retrieves the latest regulatory changes in French legal texts and compares article content (old version vs. new version). The data must be presented in a tabular format, organized chronologically. The tool is also able to provide a complete summary with references of all changes.
 
 🔍 Features
