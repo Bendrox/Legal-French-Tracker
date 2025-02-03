@@ -1,4 +1,4 @@
-📜 Legal French Tracker
+📜 # Legal French Tracker
 
    
 🚀 Problématique
@@ -15,6 +15,10 @@ Restitution des changements sous un format tabulaire, classé chronologiquement.
 
 Génération de résumés clairs et référencés.
 
+🔍 Fonctionnalités
+
+✅ Extraction des dernières évolutions réglementaires selon un périmètre défini (codes, dates).✅ Enrichissement des données avec les versions avant/après de chaque article.✅ Commentaires ligne par ligne en respectant le langage juridique.✅ Résumé précis et pertinent des modifications.
+
 🛠 Prérequis
 
 Python 3.13.0
@@ -23,9 +27,6 @@ Clé API Légifrance : Inscription sur le portail développeur de Légifrance
 
 Accès à GPT-4o
 
-Fonctionnalités
-
-✅ Extraction des dernières évolutions réglementaires selon un périmètre défini (codes, dates).✅ Enrichissement des données avec les versions avant/après de chaque article.✅ Commentaires ligne par ligne en respectant le langage juridique.✅ Résumé précis et pertinent des modifications.
 
 ⚙️ Fonctionnement de la solution
 
@@ -73,7 +74,7 @@ French legislation is becoming increasingly complex, and tracking regulatory cha
 🎯 Goals
 Develop a tool that retrieves the latest regulatory changes in French legal texts and compares article content (old version vs. new version). The data must be presented in a tabular format, organized chronologically. The tool is also able to provide a complete summary with references of all changes.
 
-# Features
+🔍 Features
 - Extract the latest changes within the scope defined by the user (code and dates).
 - Enrich the data with the content of each article, showing both its previous and updated versions.
 - Provide line-by-line commentary on regulatory changes that is relevant, precise, and concise while adhering to legal language.
