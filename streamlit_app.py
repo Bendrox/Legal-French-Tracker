@@ -62,15 +62,17 @@ annee_fin = st.text_input("Entrez la date de fin (année ou format JJ-MM-AAAA) :
 # Filtrage sur N° de décret / ordonnance / loi
 filtrer_numero = st.radio("Voulez-vous filtrer sur un N° de décret / ordonnance / loi ?", ("Non", "Oui"))
 
-numero_1, numero_2 = None, None
+numero_1, numero_2 = "", ""
+
 if filtrer_numero == "Oui":
-    numero_1 = st.text_input("Entrez le premier numéro de décret / ordonnance / loi :", value="n°2020-115")
-    numero_2 = st.text_input("Entrez le deuxième numéro de décret / ordonnance / loi :", value="n°2020-1544")
+    numero_1 = st.text_input("Entrez un 1er numéro de décret / ordonnance / loi ou mot clé :", value="").strip()
+    numero_2 = st.text_input("Entrez un 2d numéro de décret / ordonnance / loi ou mot clé :", value="").strip()
 
 # Activation brique LLM
 Active_LLM = st.radio("Voulez vous avoir une analyse des changements de chaque article suivi d'un résumé des 10 premiers changements ?  ", ("Non", "Oui"))
 
 if Active_LLM == "Oui":
+    llm_limit = st.selectbox("LLM limite (nbr de lignes):", options=[10,20,30])
     audience = st.selectbox("Sélectionnez le type d'audience pour l'analyse juridique:", options=["Tout Public", "Professionnel"])
     detail = st.selectbox("Sélectionnez le niveau de détail :", options= ["Succinct", "Détaillé"])
 
@@ -90,6 +92,7 @@ if st.button("Lancer le tracker"):
             st.success("Test Ping Pong : connexion réussie")
         else:
             st.error("Test Ping Pong : échec de connexion")
+            st.stop()
     except Exception as e:
         st.error(f"Erreur lors du test Ping Pong : {e}")
 
@@ -112,18 +115,40 @@ if st.button("Lancer le tracker"):
         st.error(f"Étape 2 - Échec : {e}")
         
     #  Filtrage par N° de décret / ordonnance / loi
+
     try:
-        if filtrer_numero == "Oui":
-            panda_output = panda_output[
-                panda_output["Titre Article Modificateur"].astype(str).str.contains( numero_1, na=False, case=False ) |
-                panda_output["Titre Article Modificateur"].astype(str).str.contains( numero_2, na=False, case=False )
-            ]
-            st.success(f"Étape 3 - Filtrage appliqué : {len(panda_output)} lignes gardées")
+        if numero_1 != "" or numero_2 != "":  
+            # Liste pour filtres
+            conditions = []
+            
+            # Si l'utilisateur a saisi un premier numéro, on prépare un filtre pour lui
+            if numero_1 != "":
+                condition_numero_1 = panda_output["Titre Article Modificateur"].astype(str).str.contains(numero_1, na=False, case=False)
+                conditions.append(condition_numero_1)
+            
+            # Si l'utilisateur a saisi un deuxième numéro, on prépare un filtre pour lui
+            if numero_2 != "":
+                condition_numero_2 = panda_output["Titre Article Modificateur"].astype(str).str.contains(numero_2, na=False, case=False)
+                conditions.append(condition_numero_2)
+
+            # Vérifie s'il y a au moins un filtre à appliquer
+            if conditions:
+                # Combine les conditions avec un "OU" logique pour garder les lignes qui correspondent à au moins un des numéros
+                filtre_final = pd.concat(conditions, axis=1).any(axis=1)
+                panda_output = panda_output[filtre_final]
+
+            # Affiche un message de succès avec le nombre de lignes après filtrage
+            st.success(f"Filtrage appliqué : {len(panda_output)} lignes gardées")
+
         else:
-            st.success("Étape 3 - Aucun filtrage sur les numéros appliqué")
+            # Si aucun numéro n'a été saisi, on n'applique pas de filtre et on informe l'utilisateur
+            st.success(" Aucun filtrage appliqué, toutes les données sont affichées.")
+
     except Exception as e:
-        st.error(f"Étape 3 - Erreur lors du filtrage : {e}")
-        
+        # En cas d'erreur, affiche un message pour l'utilisateur
+        st.error(f"Erreur lors du filtrage : {e}")
+
+
     # Ajout l'ancien contenu
     try:
         ajout_col_AV_prod(panda_output)
@@ -148,8 +173,8 @@ if st.button("Lancer le tracker"):
     # LLM 
     try:
         if Active_LLM == "Oui":
-            st.success("Étape 7 - Lancement de l'analyse des textes juridiques par le LLM (10 premiers changements) ")
-            panda_output = llm_apply_row(panda_output.iloc[0:10,:])
+            st.success(f"Étape 7 - Lancement de l'analyse des textes juridiques par le LLM ({llm_limit} premiers changements) ")
+            panda_output = llm_apply_row(panda_output.iloc[0:llm_limit,:])
             text_variable = panda_output['LLM_Change_Analysis_1'].str.cat()
             summary = wrap_up_multi(text_variable, audience, detail)
             st.success("Étape 7 - Analyse juridique réussie")
