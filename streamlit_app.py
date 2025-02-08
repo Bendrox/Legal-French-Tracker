@@ -62,11 +62,13 @@ annee_fin = st.text_input("Entrez la date de fin (année ou format JJ-MM-AAAA) :
 # Filtrage sur N° de décret / ordonnance / loi
 filtrer_numero = st.radio("Voulez-vous filtrer sur un N° de décret / ordonnance / loi ?", ("Non", "Oui"))
 
-numero_1, numero_2 = "", ""
+numero_1 = ""
+# numero_2 = ""
 
 if filtrer_numero == "Oui":
-    numero_1 = st.text_input("Entrez un 1er numéro de décret / ordonnance / loi ou mot clé :", value="").strip()
-    numero_2 = st.text_input("Entrez un 2d numéro de décret / ordonnance / loi ou mot clé :", value="").strip()
+    numero_1 = st.text_input("Entrez un numéro de décret / ordonnance / loi ou mot clé :",
+                             value="").strip()
+    #numero_2 = st.text_input("Entrez un 2d numéro de décret / ordonnance / loi ou mot clé :", value="").strip()
 
 # Activation brique LLM
 Active_LLM = st.radio("Voulez vous avoir une analyse des changements de chaque article suivi d'un résumé des 10 premiers changements ?  ", ("Non", "Oui"))
@@ -117,37 +119,15 @@ if st.button("Lancer le tracker"):
     #  Filtrage par N° de décret / ordonnance / loi
 
     try:
-        if numero_1 != "" or numero_2 != "":  
-            # Liste pour filtres
-            conditions = []
-            
-            # Si l'utilisateur a saisi un premier numéro, on prépare un filtre pour lui
-            if numero_1 != "":
-                condition_numero_1 = panda_output["Titre Article Modificateur"].astype(str).str.contains(numero_1, na=False, case=False)
-                conditions.append(condition_numero_1)
-            
-            # Si l'utilisateur a saisi un deuxième numéro, on prépare un filtre pour lui
-            if numero_2 != "":
-                condition_numero_2 = panda_output["Titre Article Modificateur"].astype(str).str.contains(numero_2, na=False, case=False)
-                conditions.append(condition_numero_2)
-
-            # Vérifie s'il y a au moins un filtre à appliquer
-            if conditions:
-                # Combine les conditions avec un "OU" logique pour garder les lignes qui correspondent à au moins un des numéros
-                filtre_final = pd.concat(conditions, axis=1).any(axis=1)
-                panda_output = panda_output[filtre_final]
-
-            # Affiche un message de succès avec le nombre de lignes après filtrage
+        if numero_1 != "" :
+            panda_output = panda_output[panda_output["Titre Article Modificateur"].astype(str).str.contains(numero_1, na=False, case=False)]
             st.success(f"Filtrage appliqué : {len(panda_output)} lignes gardées")
-
         else:
-            # Si aucun numéro n'a été saisi, on n'applique pas de filtre et on informe l'utilisateur
             st.success(" Aucun filtrage appliqué, toutes les données sont affichées.")
 
     except Exception as e:
         # En cas d'erreur, affiche un message pour l'utilisateur
         st.error(f"Erreur lors du filtrage : {e}")
-
 
     # Ajout l'ancien contenu
     try:
@@ -178,10 +158,6 @@ if st.button("Lancer le tracker"):
             text_variable = panda_output['LLM_Change_Analysis_1'].str.cat()
             summary = wrap_up_multi(text_variable, audience, detail)
             st.success("Étape 7 - Analyse juridique réussie")
-            # export to txt: 
-            #text_file = open("/Users/oussa/Desktop/Github_perso/Legal_FR_Tracker/data_output_streamlit/Output_summary_proXsuc_vStrmlit.txt", "w")
-            #text_file.write(summary)
-            #text_file.close()
         
             st.success("Étape 7 - Analyse juridique exportée")
             st.write(f""" {summary}""")
@@ -201,7 +177,7 @@ if st.button("Lancer le tracker"):
         #st.write("Aperçu du résumé :")
         #st.text(f"{text_file}")
         st.write(f"Aperçu du tableau des modifications du {selected_code} de {annee_debut} a/au {annee_fin}")
-        st.dataframe(panda_output.head(10))
+        st.dataframe(panda_output.head(15))
         
 
         st.download_button(
