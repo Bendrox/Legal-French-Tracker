@@ -71,7 +71,7 @@ if filtrer_numero == "Oui":
     #numero_2 = st.text_input("Entrez un 2d numéro de décret / ordonnance / loi ou mot clé :", value="").strip()
 
 # Activation brique LLM
-Active_LLM = st.radio("Voulez vous avoir une analyse des changements de chaque article suivi d'un résumé des 10 premiers changements ?  ", ("Non", "Oui"))
+Active_LLM = st.radio("Voulez vous avoir une analyse des changements de chaque article suivi d'un résumé global des changements ?  ", ("Non", "Oui"))
 
 if Active_LLM == "Oui":
     llm_limit = st.selectbox("LLM limite (nbr de lignes):", options=[10,20,30])
@@ -177,6 +177,7 @@ if st.button("Lancer le tracker"):
         #st.write("Aperçu du résumé :")
         #st.text(f"{text_file}")
         st.write(f"Aperçu du tableau des modifications du {selected_code} de {annee_debut} a/au {annee_fin}")
+        panda_output = panda_output.drop(panda_output.columns[[1, 5, 6]], axis=1)
         st.dataframe(panda_output.head(15))
         
 
