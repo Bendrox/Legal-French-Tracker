@@ -1,21 +1,25 @@
 # imports standards 
+
 import os
 import io
 from dotenv import load_dotenv
 
 #imports tiers 
+
 import streamlit as st
 import pandas as pd
 
 from langchain_community.callbacks.manager import get_openai_callback
 
 # Import des modules locaux
+
 from modules_tracker.LegiFR_call_prod_funct import ping_pong_test_prod, ajout_col_AV_prod, ajout_col_coutenu_NV_prod, get_text_modif_byDateslot_textCid_extract_content_prod
 from modules_tracker.dataprep_funct import transform_json_to_dataframe,compare_AV_vs_NV
 from modules_LLM.LLM_Analytic_changes import wrap_up_multi, llm_apply_row
 from modules_tracker.get_token import get_token_prod, get_token 
 
 load_dotenv()
+
 
 st.markdown(
     """
@@ -24,7 +28,9 @@ st.markdown(
     unsafe_allow_html=True
 )
 
+
 # Étape 1 : Sélection du Code Juridique
+
 codes = {
     "Code monétaire et financier": "LEGITEXT000006072026",
     "Code civil": "LEGITEXT000006070721",
@@ -44,11 +50,15 @@ codes = {
 selected_code = st.selectbox("Sélectionnez un code juridique :", options=list(codes.keys()))
 textCid = codes[selected_code]
 
+
 # Étape 2 : Intervalle d'années
+
 annee_debut = st.text_input("Entrez la date de début (année ou format JJ-MM-AAAA) :", value="2020")
 annee_fin = st.text_input("Entrez la date de fin (année ou format JJ-MM-AAAA) :", value="2021")
 
+
 # Filtrage sur N° de décret / ordonnance / loi
+
 filtrer_numero = st.radio("Voulez-vous filtrer sur un N° de décret / ordonnance / loi ?", ("Non", "Oui"))
 
 numero_1 = ""
@@ -57,7 +67,9 @@ if filtrer_numero == "Oui":
     numero_1 = st.text_input("Entrez un numéro de décret / ordonnance / loi ou mot clé :",
                              value="").strip()
 
+
 # Activation brique LLM
+
 active_llm = st.radio("Voulez vous avoir une analyse des changements de chaque article suivi d'un résumé global des changements ?  ", ("Non", "Oui"))
 
 if active_llm == "Oui":
@@ -65,7 +77,9 @@ if active_llm == "Oui":
     audience = st.selectbox("Sélectionnez le type d'audience pour l'analyse juridique:", options=["Tout Public", "Professionnel"])
     detail = st.selectbox("Sélectionnez le niveau de détail :", options= ["Succinct", "Détaillé"])
 
+
 # Bouton exécution
+
 if st.button("Lancer le tracker"):
     try:
         access_token_prod = get_token_prod()
@@ -75,6 +89,7 @@ if st.button("Lancer le tracker"):
         st.error(f"Erreur lors de la récupération du token : {e}")
 
     # Test Ping Pong
+    
     try:
         if ping_pong_test_prod() == 'pong':
             st.success("Test Ping Pong : connexion réussie")
@@ -85,14 +100,15 @@ if st.button("Lancer le tracker"):
         st.error(f"Erreur lors du test Ping Pong : {e}")
 
     # Récupération des données
+    
     try:
         json_output = get_text_modif_byDateslot_textCid_extract_content_prod(
             access_token_prod, textCid, annee_debut, annee_fin
         )
         st.success("Étape 1 - Requête API LégiFrance effectuée avec succès")
+    
     except Exception as e:
         st.error(f"Étape 1 - Échec : {e}")
-
     
     try:
         # Formatage  données
@@ -116,6 +132,7 @@ if st.button("Lancer le tracker"):
     except Exception as e:
         st.error(f"Étape 2 - Échec : {e}")
         
+        
     #  Filtrage par N° de décret / ordonnance / loi
 
     try:
@@ -126,31 +143,40 @@ if st.button("Lancer le tracker"):
             st.success(" Aucun filtrage appliqué, toutes les données sont affichées.")
 
     except Exception as e:
-        # En cas d'erreur, affiche un message pour l'utilisateur
         st.error(f"Erreur lors du filtrage : {e}")
 
     # Ajout l'ancien contenu
+    
     try:
         ajout_col_AV_prod(panda_output)
         st.success("Étape 4 - Ajout de l'ancienne version des articles réussi")
+    
     except Exception as e:
         st.error(f"Étape 4 - Échec : {e}")
 
+
     # Ajout nouveau contenu
+    
     try:
         ajout_col_coutenu_NV_prod(panda_output)
         st.success("Étape 5 - Ajout de la nouvelle version des articles réussi")
+    
     except Exception as e:
         st.error(f"Étape 5 - Échec : {e}")
 
+
     # Ajout colonne comparative
+    
     try:
         compare_AV_vs_NV(panda_output)
         st.success("Étape 6 - Ajout de la colonne de comparaison réussi")
+    
     except Exception as e:
         st.error(f"Étape 6 - Échec : {e}")
         
+        
     # LLM analysis /com
+    
     try:
         if active_llm == "Oui":
             st.success(f"Étape 7 - Lancement de l'analyse des textes juridiques par le LLM ({llm_limit} premiers changements) ")
@@ -172,7 +198,9 @@ if st.button("Lancer le tracker"):
     except Exception as e:
         st.error(f"Étape 7 - Échec : {e}")
 
+
     # Export en mémoire et téléchargement
+    
     try:
         buffer = io.BytesIO()
         with pd.ExcelWriter(buffer, engine='xlsxwriter') as writer:
@@ -182,7 +210,6 @@ if st.button("Lancer le tracker"):
         st.write(f"Aperçu du tableau des modifications du {selected_code} de {annee_debut} a/au {annee_fin}")
         
         st.dataframe(panda_output.head(15))
-        
 
         st.download_button(
             label="Télécharger le fichier Excel",
