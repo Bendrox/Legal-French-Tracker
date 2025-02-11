@@ -1,36 +1,26 @@
+# imports standards 
+import os
+import io
+from dotenv import load_dotenv
+
+#imports tiers 
 import streamlit as st
 import pandas as pd
-import io
-import os
-from dotenv import load_dotenv
+
 from langchain_community.callbacks.manager import get_openai_callback
 
-load_dotenv()
-
-# Import de vos fonctions et variables
+# Import des modules locaux
 from modules_tracker.LegiFR_call_sandbox_funct import *
 from modules_tracker.LegiFR_call_prod_funct import *
 from modules_tracker.dataprep_funct import *
 from modules_LLM.LLM_Analytic_changes import *
 from modules_tracker.get_token import *
 
+load_dotenv()
 
-
-# Titre centré et stylisé
 st.markdown(
     """
     <h1 style='text-align: center; color: navy;'>Legal French Tracker</h1>
-    """,
-    unsafe_allow_html=True
-)
-
-st.markdown(
-    """
-    <p style='font-size: 15px; color: #333; max-width: 1000; line-height: 1.5;'>
-        A powerful solution to monitor and track regulatory changes in French law, 
-        compare article modifications ,  provide legal insights on key amendments, 
-        and generate comprehensive summary reports on demand.
-    </p>
     """,
     unsafe_allow_html=True
 )
@@ -63,7 +53,6 @@ annee_fin = st.text_input("Entrez la date de fin (année ou format JJ-MM-AAAA) :
 filtrer_numero = st.radio("Voulez-vous filtrer sur un N° de décret / ordonnance / loi ?", ("Non", "Oui"))
 
 numero_1 = ""
-# numero_2 = ""
 
 if filtrer_numero == "Oui":
     numero_1 = st.text_input("Entrez un numéro de décret / ordonnance / loi ou mot clé :",
@@ -71,9 +60,9 @@ if filtrer_numero == "Oui":
     #numero_2 = st.text_input("Entrez un 2d numéro de décret / ordonnance / loi ou mot clé :", value="").strip()
 
 # Activation brique LLM
-Active_LLM = st.radio("Voulez vous avoir une analyse des changements de chaque article suivi d'un résumé global des changements ?  ", ("Non", "Oui"))
+active_llm = st.radio("Voulez vous avoir une analyse des changements de chaque article suivi d'un résumé global des changements ?  ", ("Non", "Oui"))
 
-if Active_LLM == "Oui":
+if active_llm == "Oui":
     llm_limit = st.selectbox("LLM limite (nbr de lignes):", options=[10,20,30])
     audience = st.selectbox("Sélectionnez le type d'audience pour l'analyse juridique:", options=["Tout Public", "Professionnel"])
     detail = st.selectbox("Sélectionnez le niveau de détail :", options= ["Succinct", "Détaillé"])
@@ -133,7 +122,7 @@ if st.button("Lancer le tracker"):
     #  Filtrage par N° de décret / ordonnance / loi
 
     try:
-        if numero_1 != "" :
+        if numero_1 :
             panda_output = panda_output[panda_output["Titre Article Modificateur"].astype(str).str.contains(numero_1, na=False, case=False)]
             st.success(f"Filtrage appliqué : {len(panda_output)} lignes gardées")
         else:
@@ -153,7 +142,7 @@ if st.button("Lancer le tracker"):
     # Ajout nouveau contenu
     try:
         ajout_col_coutenu_NV_prod(panda_output)
-        st.success("Étape 5 - Ajout de l'ancienne version des articles réussi")
+        st.success("Étape 5 - Ajout de la nouvelle version des articles réussi")
     except Exception as e:
         st.error(f"Étape 5 - Échec : {e}")
 
@@ -166,7 +155,7 @@ if st.button("Lancer le tracker"):
         
     # LLM analysis /com
     try:
-        if Active_LLM == "Oui":
+        if active_llm == "Oui":
             st.success(f"Étape 7 - Lancement de l'analyse des textes juridiques par le LLM ({llm_limit} premiers changements) ")
             
             # Applying LLM function:
