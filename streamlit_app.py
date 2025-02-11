@@ -165,8 +165,6 @@ if st.button("Lancer le tracker"):
             summary = wrap_up_multi(text_variable, audience, detail)
             
             st.success("Étape 7 - Analyse juridique réussie")
-        
-            st.success("Étape 7 - Analyse juridique exportée")
             st.write(f""" {summary}""")
         else :  
             st.success("Étape 7 - Absence de comparaison")
