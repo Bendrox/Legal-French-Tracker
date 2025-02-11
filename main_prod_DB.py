@@ -1,21 +1,19 @@
 from modules_tracker.get_token import get_token, get_token_prod
-from modules_tracker.LegiFR_call_sandbox_funct import *
-from modules_tracker.LegiFR_call_prod_funct import *
+from modules_tracker.LegiFR_call_prod_funct import ping_pong_test_prod, ajout_col_AV_prod, ajout_col_coutenu_NV_prod, get_text_modif_byDateslot_textCid_extract_content_prod
 from modules_tracker.dataprep_funct import transform_json_to_dataframe,compare_AV_vs_NV
 from tqdm import tqdm
 import requests
 
 
-access_token = get_token()
 access_token_prod = get_token_prod()
 
 # Test connection 
-if ping_pong_test_prod(access_token) == 'pong':
+if ping_pong_test_prod(access_token_prod) == 'pong':
     print("Successful ping pong test")
 
 # Step 1: Retreiving data from Léfifrance  
 try: 
-    json_output =  get_text_modif_byDateslot_textCid_extract_content_prod(access_token, "LEGITEXT000006072026", "2020", "2021")
+    json_output =  get_text_modif_byDateslot_textCid_extract_content_prod(access_token_prod, "LEGITEXT000006072026", "2020", "2021")
     print("Etape 1: Requête API LégiFrance")
 except Exception as e:
     print("Échec : Une erreur est survenue lors du Call. Détails : {e}")
