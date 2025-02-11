@@ -1,7 +1,7 @@
 from modules_tracker.get_token import get_token, get_token_prod
 from modules_tracker.LegiFR_call_sandbox_funct import *
 from modules_tracker.LegiFR_call_prod_funct import *
-from modules_tracker.dataprep_funct import *
+from modules_tracker.dataprep_funct import transform_json_to_dataframe,compare_AV_vs_NV
 from tqdm import tqdm
 import requests
 

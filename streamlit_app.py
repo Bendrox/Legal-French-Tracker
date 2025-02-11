@@ -10,11 +10,10 @@ import pandas as pd
 from langchain_community.callbacks.manager import get_openai_callback
 
 # Import des modules locaux
-from modules_tracker.LegiFR_call_sandbox_funct import *
-from modules_tracker.LegiFR_call_prod_funct import *
-from modules_tracker.dataprep_funct import *
-from modules_LLM.LLM_Analytic_changes import *
-from modules_tracker.get_token import *
+from modules_tracker.LegiFR_call_prod_funct import ping_pong_test_prod, ajout_col_AV_prod, ajout_col_coutenu_NV_prod, get_text_modif_byDateslot_textCid_extract_content_prod
+from modules_tracker.dataprep_funct import transform_json_to_dataframe,compare_AV_vs_NV
+from modules_LLM.LLM_Analytic_changes import wrap_up_multi, llm_apply_row
+from modules_tracker.get_token import get_token_prod, get_token 
 
 load_dotenv()
 
@@ -57,7 +56,6 @@ numero_1 = ""
 if filtrer_numero == "Oui":
     numero_1 = st.text_input("Entrez un numéro de décret / ordonnance / loi ou mot clé :",
                              value="").strip()
-    #numero_2 = st.text_input("Entrez un 2d numéro de décret / ordonnance / loi ou mot clé :", value="").strip()
 
 # Activation brique LLM
 active_llm = st.radio("Voulez vous avoir une analyse des changements de chaque article suivi d'un résumé global des changements ?  ", ("Non", "Oui"))
@@ -70,7 +68,6 @@ if active_llm == "Oui":
 # Bouton exécution
 if st.button("Lancer le tracker"):
     try:
-        #access_token = get_token() sandbox API call functions
         access_token_prod = get_token_prod()
 
         st.success("Étape 0 - Récupération du token réussie")
@@ -79,7 +76,7 @@ if st.button("Lancer le tracker"):
 
     # Test Ping Pong
     try:
-        if ping_pong_test(access_token) == 'pong':
+        if ping_pong_test_prod() == 'pong':
             st.success("Test Ping Pong : connexion réussie")
         else:
             st.error("Test Ping Pong : échec de connexion")
