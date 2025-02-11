@@ -1,17 +1,26 @@
+#imports tiers + standards
+from tqdm import tqdm
+import requests
+import sys
+
+# Import des modules locaux
 from modules_tracker.get_token import get_token, get_token_prod
 from modules_tracker.LegiFR_call_prod_funct import ping_pong_test_prod, ajout_col_AV_prod, ajout_col_coutenu_NV_prod, get_text_modif_byDateslot_textCid_extract_content_prod
 from modules_tracker.dataprep_funct import transform_json_to_dataframe,compare_AV_vs_NV
-from tqdm import tqdm
-import requests
-
 
 access_token_prod = get_token_prod()
 
 # Test connection 
-if ping_pong_test_prod(access_token_prod) == 'pong':
-    print("Successful ping pong test")
 
-
+try:
+    if ping_pong_test_prod(access_token_prod) == 'pong':
+        print("Connexion réussie (Ping Pong Test)")
+    else:
+        print("Connexion échouée (Ping Pong Test)")
+except Exception as e:
+    print(f"Erreur lors du test de connexion : {e}")
+    
+    
 # Step 1: Retreiving data from Léfifrance  
 
 try: 
@@ -19,8 +28,8 @@ try:
     print("Etape 1: Requête API LégiFrance")
 except Exception as e:
     print(f"Échec : Une erreur est survenue lors du Call. Détails : {e}")
-
-
+    
+    
 # Step 2: Formating data
 
 try: 
