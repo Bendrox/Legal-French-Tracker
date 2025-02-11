@@ -107,12 +107,26 @@ if st.button("Lancer le tracker"):
     except Exception as e:
         st.error(f"Étape 1 - Échec : {e}")
 
-    # Formatage  données
+    
     try:
+        # Formatage  données
         panda_output = transform_json_to_dataframe(json_output)
-        panda_output = panda_output.drop('Est la dernière version', axis=1)
+        
+        # DataFrame Cleaning + prepare  
+        panda_output.drop(['Version du', 
+                           'Année',
+                           'Est la dernière version',
+                           'Nature Article Modificateur', 
+                           'ID Parent', 'Nom Parent', 
+                           'Date de fin (Article Cible)',
+                           'Date de début cible Article Modificateur',
+                           'CID Parent'
+                           ], axis=1, inplace = True)
+        panda_output.rename(columns={"Date de début cible d'entrée en vigueur": "Date de début cible",
+                                     "Action Article Modificateur":"Action" }, inplace= True)
         panda_output.reset_index(drop=True, inplace=True)
         st.success(f"Étape 2 - Formatage des données réussi : {len(panda_output)} lignes créées")
+    
     except Exception as e:
         st.error(f"Étape 2 - Échec : {e}")
         
@@ -150,13 +164,20 @@ if st.button("Lancer le tracker"):
     except Exception as e:
         st.error(f"Étape 6 - Échec : {e}")
         
-    # LLM 
+    # LLM analysis /com
     try:
         if Active_LLM == "Oui":
             st.success(f"Étape 7 - Lancement de l'analyse des textes juridiques par le LLM ({llm_limit} premiers changements) ")
+            
+            # Applying LLM function:
             panda_output = llm_apply_row(panda_output.iloc[0:llm_limit,:])
+            
+            # Concate all LLM commentaries 
             text_variable = panda_output['LLM_Change_Analysis_1'].str.cat()
+            
+            # WapUp LLM analysis 
             summary = wrap_up_multi(text_variable, audience, detail)
+            
             st.success("Étape 7 - Analyse juridique réussie")
         
             st.success("Étape 7 - Analyse juridique exportée")
@@ -174,10 +195,8 @@ if st.button("Lancer le tracker"):
             panda_output.to_excel(writer, index=False, sheet_name='Données')
         st.success("Étape 8 - Fichier Excel préparé pour téléchargement")
 
-        #st.write("Aperçu du résumé :")
-        #st.text(f"{text_file}")
         st.write(f"Aperçu du tableau des modifications du {selected_code} de {annee_debut} a/au {annee_fin}")
-        panda_output = panda_output.drop(panda_output.columns[[1, 5, 6]], axis=1)
+        
         st.dataframe(panda_output.head(15))
         
 
