@@ -113,9 +113,9 @@ def legipart(textId, date): # LEGITEXT000006075116 2021-04-15
   return response.json()
 
 # Call 2.6: get all_versions of an article by cid 
-    """
-    Pour trouver et récup JORF ordonnance Exemple: https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000042636234
-    """
+"""
+    Pour trouver et récup JORF ordonnance Exemple: JORFTEXT000042636234
+"""
     
 def getJOFR(textCid :str): #JORFTEXT000042636234
   url= 'https://sandbox-api.piste.gouv.fr/dila/legifrance/lf-engine-app/consult/jorf'
@@ -203,10 +203,11 @@ def get_code(textId,sctCid,abrogated, date):
 
 # CAll 2.11: 
 
-    """
+"""
     Récupère un extrait (section ou article) d'une version spécifique d'un texte à partir des identifiants du texte (textCid) 
     et de l'extrait section ou article: "elementCid"
-    """
+"""
+
 def textCidAndElementCid(textCid, elementCid): # text cid: LEGITEXT000006072050 Element Cid LEGIARTI000006901817
   url = "https://sandbox-api.piste.gouv.fr/dila/legifrance/lf-engine-app/chrono/textCidAndElementCid"
   headers = {
