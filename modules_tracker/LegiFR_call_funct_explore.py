@@ -138,9 +138,6 @@ def getArticle_metadata(id : str):
           "etat": response.json()["article"]['etat'],
          "Text" : response.json()["article"]['texte']}
 
-
-
-
 # Call 2.8: get an article text by it cid and implementation date (version 1)
 
 def get_article_text_by_cid_and_implementDate(article_cid, start_date):

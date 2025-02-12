@@ -1,25 +1,21 @@
 # imports standards 
-
-import os
 import io
 from dotenv import load_dotenv
 
-#imports tiers 
+# imports tiers 
 
 import streamlit as st
 import pandas as pd
 
-from langchain_community.callbacks.manager import get_openai_callback
 
 # Import des modules locaux
 
 from modules_tracker.LegiFR_call_prod_funct import ping_pong_test_prod, ajout_col_AV_prod, ajout_col_coutenu_NV_prod, get_text_modif_byDateslot_textCid_extract_content_prod
 from modules_tracker.dataprep_funct import transform_json_to_dataframe,compare_AV_vs_NV
 from modules_LLM.LLM_Analytic_changes import wrap_up_multi, llm_apply_row
-from modules_tracker.get_token import get_token_prod, get_token 
+from modules_tracker.get_token import get_token_prod 
 
 load_dotenv()
-
 
 st.markdown(
     """
@@ -73,7 +69,7 @@ if filtrer_numero == "Oui":
 active_llm = st.radio("Voulez vous avoir une analyse des changements de chaque article suivi d'un résumé global des changements ?  ", ("Non", "Oui"))
 
 if active_llm == "Oui":
-    llm_limit = st.selectbox("LLM limite (nbr de lignes):", options=[10,20,30])
+    llm_limit = st.selectbox("LLM limite (nbr de lignes):", options=[10, 20, 30])
     audience = st.selectbox("Sélectionnez le type d'audience pour l'analyse juridique:", options=["Tout Public", "Professionnel"])
     detail = st.selectbox("Sélectionnez le niveau de détail :", options= ["Succinct", "Détaillé"])
 
@@ -100,7 +96,6 @@ if st.button("Lancer le tracker"):
         st.error(f"Erreur lors du test Ping Pong : {e}")
 
     # Récupération des données
-    
     try:
         json_output = get_text_modif_byDateslot_textCid_extract_content_prod(
             access_token_prod, textCid, annee_debut, annee_fin
@@ -114,12 +109,12 @@ if st.button("Lancer le tracker"):
         # Formatage  données
         panda_output = transform_json_to_dataframe(json_output)
         
-        # DataFrame Cleaning + prepare  
-        panda_output.drop(['Version du', 
+        # DataFrame Cleaning + prepare
+        panda_output.drop(['Version du',
                            'Année',
                            'Est la dernière version',
-                           'Nature Article Modificateur', 
-                           'ID Parent', 'Nom Parent', 
+                           'Nature Article Modificateur',
+                           'ID Parent', 'Nom Parent',
                            'Date de fin (Article Cible)',
                            'Date de début cible Article Modificateur',
                            'CID Parent'
@@ -153,7 +148,6 @@ if st.button("Lancer le tracker"):
     
     except Exception as e:
         st.error(f"Étape 4 - Échec : {e}")
-
 
     # Ajout nouveau contenu
     
@@ -192,7 +186,7 @@ if st.button("Lancer le tracker"):
             
             st.success("Étape 7 - Analyse juridique réussie")
             st.write(f""" {summary}""")
-        else :  
+        else:  
             st.success("Étape 7 - Absence de comparaison")
         
     except Exception as e:
@@ -200,7 +194,6 @@ if st.button("Lancer le tracker"):
 
 
     # Export en mémoire et téléchargement
-    
     try:
         buffer = io.BytesIO()
         with pd.ExcelWriter(buffer, engine='xlsxwriter') as writer:
