@@ -25,7 +25,7 @@ La législation française devient de plus en plus complexe, et le suivi des év
 
 - Clé API Légifrance : Inscription sur le portail développeur de Légifrance
 
-- Accès à GPT-4o
+- Accès à GPT-4o Azure 
 
 
 ⚙️ Fonctionnement de la solution
@@ -42,29 +42,25 @@ La législation française devient de plus en plus complexe, et le suivi des év
 
 🚀 Exécution de la solution
 
-- Option 1 : Construction de la base de données sans interface Streamlit
+- Option 1: Exécution avec l'interface Streamlit: streamlit run streamlit_app.py
 
-Exécute l'un des fichiers suivants :
+- Option 2: Exécution avec docker 
 
-python3 main.py  # Mode sandbox de l'API Légifrance
-python3 main_prod.py  # Mode production de l'API Légifrance
+🛠 Améliorations du code à venir: 
 
-- Option 2 : Exécution avec l'interface Streamlit
+- Mise en place de l'importation des librairies / modules internes avec __init__.py 
 
-streamlit run streamlit_app.py
+- Amélioration de la conformité du code a PEP 8
 
-📂 Autres fichiers
-
-- Explore_LégiFrance_API.ipynb : Notebook d'exploration des appels API.📌 modules_tracker/ : Contient les scripts Python pour les appels API, l'authentification et la préparation des données.
+- CI / CD 
 
 🔮 Fonctionnalités à venir
 
--  Visualisation interactive des changements dans une interface web.
+- LLMops
 
--  Système de notifications pour informer des mises à jour critiques.
+- Mesure qualité du commentaire LLM
 
-- Contribuer : les suggestions sont les bienvenues !
-
+- Explorer alternatives autres LLM. 
 
 ------------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -102,26 +98,24 @@ Develop a tool that retrieves the latest regulatory changes in French legal text
 
 - The LLM summarizes the comments and provides a user-friendly output.
 
-🚀  Run the solution : 
-- Option 1: build the database (tabular format) without using the Streamlit interface:
+🚀 Run the solution
 
-main.py (uses a sandbox environment of the Légifrance API).
+- Option 1: Execution with the Streamlit interface: streamlit run streamlit_app.py
 
-main_prod.py (uses a production environment of the Légifrance API; no significant performance improvements recorded) but a significate reliability in the responses.
+- Option 2: Execution with docker
 
-- Option 2: build the database (tabular format) using the Streamlit interface:
+🛠 Upcoming code improvements:
 
-streamlit run streamlit_app.py in terminal to execute the Streamlit application.
+- Enhance of the import of internal libraries / modules with __init__.py
 
-Other files:
+- Improve the code compliance with PEP 8
 
-- Explore_LégiFrance_API.ipynb: A notebook for exploring API calls, which also serves as a notebook version of the application.
-- modules_tracker: Contains .py files for main, which include API call functions, authentication mechanisms, and data preparation functions (cleaning and formatting).
+- CI / CD
 
-🔮 Other upcomming features
+🔮 Upcoming features
 
-- Interactive visualization of changes in a web interface.
+- LLMops
 
-- Notification system to inform about critical updates.
+- Quality measurement of the LLM comment
 
-- Contributor: suggestions are welcome!
+- Alternative comments with other models
